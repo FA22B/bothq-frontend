@@ -55,10 +55,15 @@ $discord-colors: (
 // BotHQ Colors
 $bhq-light-background: #FFFFFF;
 $bhq-light-medium-background: #edf1f3;
-$bhq-light-deep-background: #acb3be;
+$bhq-light-deep-background: #d4dade;
+$bhq-light-link: #858585;
+$bhq-light-link-hover: #000000;
 $bhq-dark-background: #292F34;
 $bhq-dark-medium-background: #1D2325;
 $bhq-dark-deep-background: #161A1C;
+$bhq-dark-link: #858585;
+$bhq-dark-link-hover: #FFFFFF;
+
 $bhq-shadow: #0A171D;
 $bhq-deep-shadow: #141920;
 $bhq-grey: #585858;
@@ -72,14 +77,16 @@ $bothq-colors: (
   "deep-shadow": $bhq-deep-shadow,
   "grey": $bhq-grey,
   "light-grey": $bhq-light-grey,
-  "link": $bhq-dark-deep-background
+  "link": $bhq-light-link,
+  "link-hover": $bhq-light-link-hover
 );
 
 $bothq-dark-colors: (
   "background": $bhq-dark-background,
   "medium-background": $bhq-dark-medium-background,
   "deep-background": $bhq-dark-deep-background,
-  "link": $bhq-light-background
+  "link": $bhq-dark-link,
+  "link-hover": $bhq-dark-link-hover
 );
 
 //Create Color-Variables
