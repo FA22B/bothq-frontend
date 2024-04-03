@@ -5,7 +5,15 @@
   "projects": {
     "BotHQ": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "path": "/src/app/components"
+        },
+        "@schematics/angular:service": {
+          "path": "/src/app/services",
+          "flat": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -65,7 +73,8 @@
               "buildTarget": "BotHQ:build:production"
             },
             "development": {
-              "buildTarget": "BotHQ:build:development"
+              "buildTarget": "BotHQ:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
