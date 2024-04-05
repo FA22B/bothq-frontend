@@ -1,0 +1,64 @@
+.navbar {
+  background-color: color-mix(in srgb, var(--bhq-background) 65%, rgba(100, 100, 100, 0));
+  backdrop-filter: blur(5px);
+}
+
+.bi-list {
+  transform: translateY(-10%);
+  scale: 1.75;
+  margin-left: 0.5rem;
+  color: var(--bhq-link);
+}
+
+.bi-list:hover {
+  stroke-width: 0.5px;
+  stroke: var(--bhq-link-hover);
+  color: var(--bhq-link-hover);
+  cursor: pointer;
+}
+
+.bi-sun-fill {
+  transform: translateY(-15%);
+  margin-right: 0.5rem;
+}
+
+.bi-moon-fill {
+  transform: translateX(10%) translateY(-15%);
+  scale: 0.8;
+  margin-right: 0.5rem;
+}
+
+.bi-circle-half {
+  transform: translateY(-15%);
+  margin-right: 0.5rem;
+}
+
+.nav {
+  padding-top: 0.5rem;
+  margin-left: 30vw;
+  margin-right: 30vw;
+}
+
+.nav .nav-link {
+  color: var(--bhq-link);
+}
+
+.nav .nav-link:hover {
+  cursor: pointer;
+  color: var(--bhq-link-hover);
+}
+
+.dropdown-toggle {
+  background-color: var(--bhq-deep-background);
+  color: var(--bs-body-color)
+}
+
+.dropdown-menu {
+  background-color: var(--bhq-medium-background);
+  text-align: left;
+  min-width: 0;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}

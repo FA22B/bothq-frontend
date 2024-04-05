@@ -1,0 +1,11 @@
+<div class="sidebar z-3" id="mySidebar" style="z-index: 100">
+  <button (click)="closeSidebar()" aria-label="Close" class="btn-close" type="button"></button>
+
+  @if (loggedIn) {
+    <button class="btn btn-outline-danger logBtn" (click)="logOut()"><strong>Logout</strong>
+    </button>
+  } @else {
+    <button class="btn btn-outline-primary logBtn" (click)="logIn()"><strong>Login</strong>
+    </button>
+  }
+</div>

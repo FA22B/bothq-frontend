@@ -1,0 +1,26 @@
+.sidebar {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: var(--bhq-medium-background);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: ease 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+}
+
+.btn-close {
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  margin: 0;
+}
+
+.logBtn {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  margin: 0;
+}

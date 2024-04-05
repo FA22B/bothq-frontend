@@ -1,0 +1,58 @@
+<ul class="nav justify-content-center fixed-top z-2">
+  <li class="nav-item">
+    <a class="nav-link" href="#"><strong>BotHQ</strong></a>
+  </li>
+  <li class="nav-item">
+    <a aria-disabled="true" class="nav-link disabled"><strong>|</strong></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled">Server</a>
+  </li>
+</ul>
+<nav class="navbar fixed-top z-1">
+  <div class="container-fluid">
+    <a (click)="openSidebar()" aria-expanded="false" class="navbar-brand">
+      <svg class="bi bi-list" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+           xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+          fill-rule="evenodd"/>
+      </svg>
+    </a>
+    <div>
+      <div class="row">
+        <div class="col">
+          <div class="nav-item dropdown-center">
+            <button aria-expanded="false" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" type="button">
+              @if (appTheme == 'light') {
+                <i class="bi bi-sun-fill"></i>
+              } @else {
+                <i class="bi bi-moon-fill"></i>
+              }
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a (click)="themeToggle('light')" class="dropdown-item"><i class="bi bi-sun-fill"></i> Light</a>
+              </li>
+              <li>
+                <a (click)="themeToggle('dark')" class="dropdown-item"><i class="bi bi-moon-fill"></i> Dark</a>
+              </li>
+              <li>
+                <a (click)="themeToggle('auto')" class="dropdown-item"><i class="bi bi-circle-half"></i> System</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          @if (loggedIn) {
+            <button class="btn btn-outline-danger" (click)="logOut()"><strong>Logout</strong>
+            </button>
+          } @else {
+            <button class="btn btn-outline-primary" (click)="logIn()"><strong>Login</strong>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
