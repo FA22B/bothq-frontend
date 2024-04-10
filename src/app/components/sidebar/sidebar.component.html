@@ -2,10 +2,10 @@
   <button (click)="closeSidebar()" aria-label="Close" class="btn-close" type="button"></button>
 
   @if (loggedIn) {
-    <button class="btn btn-outline-danger logBtn" (click)="logOut()"><strong>Logout</strong>
+    <button class="btn btn-ol-red logBtn" (click)="logOut()"><strong>Logout</strong>
     </button>
   } @else {
-    <button class="btn btn-outline-primary logBtn" (click)="logIn()"><strong>Login</strong>
+    <button class="btn btn-ol-blurple logBtn" (click)="logIn()"><strong>Login</strong>
     </button>
   }
 </div>

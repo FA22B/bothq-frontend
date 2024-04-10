@@ -70,8 +70,6 @@ $bothq-dark-colors: (
 
 // 2. Include any default variable overrides here
 
-$primary: $dc-blurple;
-$danger: $dc-red;
 $carousel-indicator-active-bg: black;
 $carousel-indicator-bg: black;
 $carousel-dark-indicator-active-bg: white;
@@ -82,14 +80,6 @@ $btn-close-focus-shadow: none;
 $card-border-radius: 20px;
 $btn-border-radius: 10px;
 $badge-border-radius: 10px;
-
-.btn-outline-danger:hover {
-  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-danger) 75%, rgba(100, 100, 100, 0)));
-}
-
-.btn-outline-primary:hover {
-  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-primary) 75%, rgba(100, 100, 100, 0)));
-}
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../../../node_modules/bootstrap/scss/variables";
@@ -145,4 +135,61 @@ $badge-border-radius: 10px;
   }
 
   $carousel-control-color: white;
+}
+
+.btn-ol-blurple {
+  color: $dc-blurple;
+  --bs-btn-bg: transtarent;
+  --bs-btn-border-color: var(--dc-blurple);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--dc-blurple);
+  --bs-btn-hover-border-color: var(--dc-blurple);
+  --bs-btn-focus-shadow-rgb: var(--dc-blurple);
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: #{shade-color($dc-blurple, 20%)};
+  --bs-btn-active-border-color: #{shade-color($dc-blurple, 20%)};
+}
+
+.btn-ol-blurple:hover {
+  background: $dc-blurple;
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-primary) 75%, rgba(100, 100, 100, 0)));
+}
+
+.btn-ol-red {
+  color: $dc-red;
+  --bs-btn-bg: transtarent;
+  --bs-btn-border-color: var(--dc-red);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: var(--dc-red);
+  --bs-btn-hover-border-color: var(--dc-red);
+  --bs-btn-focus-shadow-rgb: var(--dc-red);
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: #{shade-color($dc-red, 20%)};
+  --bs-btn-active-border-color: #{shade-color($dc-red, 20%)};
+}
+
+.btn-ol-red:hover {
+  background: $dc-red;
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-danger) 75%, rgba(100, 100, 100, 0)));
+}
+
+.btn-blurple {
+  color: white;
+  background: $dc-blurple;
+  --bs-btn-border-color: var(--dc-blurple);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($dc-blurple, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($dc-blurple, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--dc-blurple);
+  --bs-btn-active-color: var(--bs-white);
+  --bs-btn-active-bg: #{shade-color($dc-blurple, 20%)};
+  --bs-btn-active-border-color: #{shade-color($dc-blurple, 20%)};
+}
+
+.text-bg-red {
+  background: $dc-red;
+}
+
+.text-bg-blurple {
+  background: $dc-blurple;
 }
