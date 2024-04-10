@@ -15,18 +15,21 @@ import {AuthService} from "./services/auth/auth.service";
 export class AppComponent {
   title = 'BotHQ';
   theme = 'dark'
-  loggedIn = false;
-  protected readonly AuthService = AuthService;
 
-  constructor(private authService: AuthService) {
-    this.loggedIn = this.authService.loggedIn
-    this.theme = this.getPreferredTheme();
+  constructor(public authService: AuthService) {
+    this.theme = this.getPreferredTheme()
   }
 
+  /**
+   * Change the theme of the website based on the user input via the navbar
+   */
   receiveTheme($event: string) {
     this.themeToggle($event)
   }
 
+  /**
+   * Change the theme of the website based on the user input and store the theme
+   */
   themeToggle(option: string) {
     if (option === 'auto') {
       this.theme = (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
@@ -37,14 +40,23 @@ export class AppComponent {
     }
   }
 
+  /**
+   * Store the theme in local storage
+   */
   setStoredTheme(theme: string) {
     localStorage.setItem('theme', theme)
   }
 
+  /**
+   * Get the theme from local storage
+   */
   getStoredTheme() {
     return localStorage.getItem('theme')
   }
 
+  /**
+   * Get the preferred theme based on the user's system settings
+   */
   getPreferredTheme() {
     let storedTheme = this.getStoredTheme()
     if (storedTheme && storedTheme != 'auto') {
@@ -53,15 +65,20 @@ export class AppComponent {
     return (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
   }
 
+  /**
+   * Toggle the login status of the user
+   */
   toggleLogin($event: boolean) {
     if (this.authService.loggedIn) {
       this.authService.loggedIn = false
     } else {
       this.redirectDiscord()
     }
-    this.loggedIn = this.authService.loggedIn
   }
 
+  /**
+   * Redirect the user to the discord login page
+   */
   redirectDiscord() {
     window.location.href = this.authService.getLoginAddress()
   }

@@ -2,29 +2,10 @@
 <html [attr.data-bs-theme]=this.theme lang="en">
 <body id="main" style="padding-left: 0; padding-right: 0; padding-bottom: 0">
 <app-navbar (loginEvent)="toggleLogin($event)" (sidebarOpenEvent)="openSidebar()"
-            (themeEvent)="receiveTheme($event)" [appTheme]="this.theme" [loggedIn]="this.loggedIn"
+            (themeEvent)="receiveTheme($event)" [appTheme]="this.theme" [loggedIn]="this.authService.loggedIn"
 ></app-navbar>
 <app-sidebar (loginEvent)="toggleLogin($event)" (sidebarCloseEvent)="closeSidebar()"
-             [loggedIn]="this.loggedIn"></app-sidebar>
-<div class="container-fluid" style="padding-top: 5rem; padding-right: 0; padding-left: 0; margin-right: 0">
-  <div class="row" style="padding: 0; margin-right: 0">
-    <div class="col text-center z-0">
-      <h1><strong>Willkommen im BotHQ</strong></h1>
-    </div>
-  </div>
-  <div class="row justify-content-center" style="padding-top: 5rem; padding-right: 0; padding-left: 0; margin-right: 0">
-    <div class="col text-center z-0">
-      <h2 style="color: var(--dc-blurple)"><strong>Unsere Top Plugins</strong></h2>
-    </div>
-  </div>
-  <div class="row justify-content-center"
-       style="padding-top: 2.5rem; padding-right: 0; padding-left: 0; margin-right: 0">
-    <div class="col-md-auto z-0">
-      <app-carousel></app-carousel>
-    </div>
-  </div>
-</div>
+             [loggedIn]="this.authService.loggedIn"></app-sidebar>
+<router-outlet/>
 </body>
 </html>
-
-<router-outlet/>

@@ -1,16 +1,16 @@
 import {Routes} from '@angular/router';
 import {RedirectComponent} from "./components/redirect/redirect.component";
 import {authGuard} from "./services/auth/auth.guard";
-import {AppComponent} from "./app.component";
+import {HomeComponent} from "./components/home/home.component";
 
 export const routes: Routes = [
   // discord oauth
-  {path: '/home', component: AppComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'redirect', component: RedirectComponent},
 
 
   // Landing Page
-  {path: '/home', component: AppComponent, pathMatch: 'full', canActivate: [authGuard]},
+  {path: '', component: HomeComponent, pathMatch: 'full', canActivate: [authGuard]},
 
 ];
 

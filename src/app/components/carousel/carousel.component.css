@@ -29,7 +29,6 @@
 .carousel-item {
   margin-top: 8rem;
   z-index: 1;
-  filter: drop-shadow(0 15px 20px color-mix(in srgb, var(--bhq-deep-shadow) 75%, rgba(100, 100, 100, 0)));
 }
 
 #leftBlur {

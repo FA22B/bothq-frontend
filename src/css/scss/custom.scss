@@ -17,18 +17,18 @@ $dc-fuchsia: #EB459E;
 $dc-black: #23272A;
 
 $discord-colors: (
-  "blurple": $dc-blurple,
-  "red": $dc-red,
-  "green": $dc-green,
-  "yellow": $dc-yellow,
-  "fuchsia": $dc-fuchsia,
-  "black": $dc-black
+  "blurple": $dc-blurple, // "blurple" is a custom color
+  "red": $dc-red, // "red" is a custom color
+  "green": $dc-green, // "green" is a custom color
+  "yellow": $dc-yellow, // "yellow" is a custom color
+  "fuchsia": $dc-fuchsia, // "fuchsia" is a custom color
+  "black": $dc-black // "black" is a custom color
 );
 
 // BotHQ Colors
 $bhq-light-background: #FFFFFF;
-$bhq-light-medium-background: #edf1f3;
-$bhq-light-deep-background: #d4dade;
+$bhq-light-medium-background: #edeff3;
+$bhq-light-deep-background: #d4d6de;
 $bhq-light-link: #858585;
 $bhq-light-link-hover: #000000;
 $bhq-dark-background: #292F34;
@@ -38,28 +38,34 @@ $bhq-dark-link: #858585;
 $bhq-dark-link-hover: #FFFFFF;
 
 $bhq-shadow: #0A171D;
+$bhq-soft-shadow: #4951b7;
+$bhq-dark-soft-shadow: #04042c;
 $bhq-deep-shadow: #141920;
 $bhq-grey: #585858;
 $bhq-light-grey: #A7A7A7;
 
 $bothq-colors: (
-  "background": $bhq-light-background,
-  "medium-background": $bhq-light-medium-background,
-  "deep-background": $bhq-light-deep-background,
-  "shadow": $bhq-shadow,
-  "deep-shadow": $bhq-deep-shadow,
-  "grey": $bhq-grey,
-  "light-grey": $bhq-light-grey,
-  "link": $bhq-light-link,
-  "link-hover": $bhq-light-link-hover
+  "background": $bhq-light-background, // "background" is a custom color
+  "medium-background": $bhq-light-medium-background, // "medium-background" is a custom color
+  "deep-background": $bhq-light-deep-background, // "deep-background" is a custom color
+  "shadow": $bhq-shadow, // "shadow" is a custom color
+  "soft-shadow": $bhq-soft-shadow, // "soft-shadow" is a custom color
+  "deep-shadow": $bhq-deep-shadow, // "deep-shadow" is a custom color
+  "grey": $bhq-grey, // "grey" is a custom color
+  "light-grey": $bhq-light-grey, // "light-grey" is a custom color
+  "link": $bhq-light-link, // "link" is a custom color
+  "link-hover": $bhq-light-link-hover, // "link-hover" is a custom color
+  "grey-border": $bhq-light-grey // "grey-border" is a custom color
 );
 
 $bothq-dark-colors: (
-  "background": $bhq-dark-background,
-  "medium-background": $bhq-dark-medium-background,
-  "deep-background": $bhq-dark-deep-background,
-  "link": $bhq-dark-link,
-  "link-hover": $bhq-dark-link-hover
+  "background": $bhq-dark-background, // "background" is a custom color
+  "medium-background": $bhq-dark-medium-background, // "medium-background" is a custom color
+  "deep-background": $bhq-dark-deep-background, // "deep-background" is a custom color
+  "soft-shadow": $bhq-dark-soft-shadow, // "soft-shadow" is a custom color
+  "link": $bhq-dark-link, // "link" is a custom color
+  "link-hover": $bhq-dark-link-hover, // "link-hover" is a custom color
+  "grey-border": $bhq-grey // "grey-border" is a custom color
 );
 
 // 2. Include any default variable overrides here
@@ -73,7 +79,17 @@ $carousel-dark-indicator-bg: white;
 $carousel-control-color: black;
 $btn-close-white-filter: invert(1) brightness(200%);
 $btn-close-focus-shadow: none;
+$card-border-radius: 20px;
+$btn-border-radius: 10px;
+$badge-border-radius: 10px;
 
+.btn-outline-danger:hover {
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-danger) 75%, rgba(100, 100, 100, 0)));
+}
+
+.btn-outline-primary:hover {
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-primary) 75%, rgba(100, 100, 100, 0)));
+}
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "../../../node_modules/bootstrap/scss/variables";
@@ -97,6 +113,8 @@ $btn-close-focus-shadow: none;
 @import "../../../node_modules/bootstrap/scss/buttons";
 @import "../../../node_modules/bootstrap/scss/carousel";
 @import "../../../node_modules/bootstrap/scss/close";
+@import "../../../node_modules/bootstrap/scss/card";
+@import "../../../node_modules/bootstrap/scss/badge";
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 //@import "../../../node_modules/bootstrap/scss/utilities/api";

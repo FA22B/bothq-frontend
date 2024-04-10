@@ -1,0 +1,12 @@
+.badge {
+  position: absolute;
+  z-index: 1;
+  left: 30%;
+  top: 10%;
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--dc-red) 75%, rgba(100, 100, 100, 0)));
+}
+
+.card {
+  background-color: var(--bhq-background);
+  box-shadow: 0 15px 50px color-mix(in srgb, var(--bhq-soft-shadow) 50%, rgba(100, 100, 100, 0));
+}
