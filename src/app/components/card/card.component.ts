@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {BHQPlugin} from "../../bhqplugin";
 
 @Component({
   selector: 'app-card',
@@ -8,6 +9,5 @@ import {Component, Input} from '@angular/core';
   styleUrl: './card.component.css'
 })
 export class CardComponent {
-  @Input() isNew: boolean = false
-
+  @Input() bhqplugin!: BHQPlugin;
 }

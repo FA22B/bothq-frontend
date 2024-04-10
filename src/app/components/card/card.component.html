@@ -1,13 +1,12 @@
-@if (isNew) {
+@if (this.bhqplugin.isNew) {
   <h3 style="padding: 0; margin: 0"><span class="badge text-bg-danger">New</span></h3>
 }
 <div class="card" style="width: 18rem; margin: auto;">
   <!--  <img alt="..." class="card-img-top" src="...">-->
   <span class="card-img-top placeholder" style="width: 100%; height: 10rem;"></span>
   <div class="card-body">
-    <h4 class="card-title">Plugin</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-      content.</p>
+    <h4 class="card-title">{{ this.bhqplugin.name }}</h4>
+    <p class="card-text">{{ this.bhqplugin.description }}</p>
     <a class="btn btn-primary" href="#">Anzeigen</a>
   </div>
 </div>

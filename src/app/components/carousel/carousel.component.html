@@ -2,12 +2,16 @@
   <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators"
        style="height: 30rem; width: 40rem; margin: auto">
     <div class="carousel-indicators">
-      <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
-              data-bs-target="#carouselExampleIndicators" type="button"></button>
-      <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators"
-              type="button"></button>
-      <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators"
-              type="button"></button>
+      @for (plugin of pluginList; track $index) {
+        @if ($index == 0) {
+          <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
+                  data-bs-target="#carouselExampleIndicators" type="button"></button>
+        } @else {
+          <button [attr.aria-label]="($index + 1)" [attr.data-bs-slide-to]="$index"
+                  data-bs-target="#carouselExampleIndicators"
+                  type="button"></button>
+        }
+      }
     </div>
     <div>
       <div id="mask">
@@ -16,15 +20,17 @@
           <span id="rightBlur"></span>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <app-card [isNew]="true"></app-card>
-          </div>
-          <div class="carousel-item">
-            <app-card></app-card>
-          </div>
-          <div class="carousel-item">
-            <app-card></app-card>
-          </div>
+          @for (plugin of pluginList; track $index) {
+            @if ($index == 0) {
+              <div class="carousel-item active">
+                <app-card [bhqplugin]="plugin"></app-card>
+              </div>
+            } @else {
+              <div class="carousel-item">
+                <app-card [bhqplugin]="plugin"></app-card>
+              </div>
+            }
+          }
         </div>
       </div>
     </div>
