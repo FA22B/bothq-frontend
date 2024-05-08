@@ -5,7 +5,7 @@
 ></app-navbar>
 <app-sidebar (loginEvent)="toggleLogin($event)" (sidebarCloseEvent)="closeSidebar()"
              [loggedIn]="this.authService.loggedIn"></app-sidebar>
-<body id="main" style="padding-left: 0; padding-right: 0; padding-bottom: 0">
+<body id="main">
 <router-outlet/>
 </body>
 </html>
