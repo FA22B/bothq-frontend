@@ -1,12 +1,12 @@
 <ul class="nav justify-content-center fixed-top z-3">
   <li class="nav-item">
-    <a class="nav-link" href="/home"><strong>BotHQ</strong></a>
+    <a (click)="goTo('home')" class="nav-link"><strong>BotHQ</strong></a>
   </li>
   <li class="nav-item">
     <a aria-disabled="true" class="nav-link disabled"><strong>|</strong></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled">Server</a>
+    <a (click)="goTo('server-settings')" class="nav-link">Server</a>
   </li>
 </ul>
 <nav class="navbar fixed-top z-2">

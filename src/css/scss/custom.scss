@@ -27,22 +27,25 @@ $discord-colors: (
 
 // BotHQ Colors
 $bhq-light-background: #FFFFFF;
-$bhq-light-medium-background: #edeff3;
-$bhq-light-deep-background: #d4d6de;
+$bhq-light-deep-background: #edeff3;
+$bhq-light-medium-background: #d4d6de;
 $bhq-light-link: #858585;
 $bhq-light-link-hover: #000000;
 $bhq-dark-background: #292F34;
-$bhq-dark-medium-background: #1D2325;
-$bhq-dark-deep-background: #161A1C;
+$bhq-dark-medium-background: #262a2d;
+$bhq-dark-deep-background: #1e2225;
 $bhq-dark-link: #858585;
 $bhq-dark-link-hover: #FFFFFF;
 
-$bhq-shadow: #0A171D;
+$bhq-shadow: #3c4c52;
+$bhq-dark-shadow: #08141a;
 $bhq-soft-shadow: #4951b7;
 $bhq-dark-soft-shadow: #04042c;
-$bhq-deep-shadow: #141920;
-$bhq-grey: #585858;
+$bhq-deep-shadow: #222831;
+$bhq-dark-deep-shadow: #141920;
 $bhq-light-grey: #A7A7A7;
+$bhq-grey: #585858;
+$bhq-dark-grey: #3A3A3A;
 
 $bothq-colors: (
   "background": $bhq-light-background, // "background" is a custom color
@@ -53,19 +56,24 @@ $bothq-colors: (
   "deep-shadow": $bhq-deep-shadow, // "deep-shadow" is a custom color
   "grey": $bhq-grey, // "grey" is a custom color
   "light-grey": $bhq-light-grey, // "light-grey" is a custom color
+  "dark-grey": $bhq-dark-grey, // "dark-grey" is a custom color
   "link": $bhq-light-link, // "link" is a custom color
   "link-hover": $bhq-light-link-hover, // "link-hover" is a custom color
-  "grey-border": $bhq-light-grey // "grey-border" is a custom color
+  "grey-border": $bhq-light-grey, // "grey-border" is a custom color
+  "grey-border-hover": $bhq-grey // "grey-border-hover" is a custom color
 );
 
 $bothq-dark-colors: (
   "background": $bhq-dark-background, // "background" is a custom color
   "medium-background": $bhq-dark-medium-background, // "medium-background" is a custom color
   "deep-background": $bhq-dark-deep-background, // "deep-background" is a custom color
+  "shadow": $bhq-dark-shadow, // "shadow" is a custom color
   "soft-shadow": $bhq-dark-soft-shadow, // "soft-shadow" is a custom color
+  "depp-shadow": $bhq-dark-deep-shadow, // "deep-shadow" is a custom color
   "link": $bhq-dark-link, // "link" is a custom color
   "link-hover": $bhq-dark-link-hover, // "link-hover" is a custom color
-  "grey-border": $bhq-grey // "grey-border" is a custom color
+  "grey-border": $bhq-grey, // "grey-border" is a custom color
+  "grey-border-hover": $bhq-light-grey // "grey-border-hover" is a custom color
 );
 
 // 2. Include any default variable overrides here
@@ -105,6 +113,7 @@ $badge-border-radius: 10px;
 @import "../../../node_modules/bootstrap/scss/close";
 @import "../../../node_modules/bootstrap/scss/card";
 @import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/forms";
 
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 //@import "../../../node_modules/bootstrap/scss/utilities/api";
@@ -139,6 +148,7 @@ $badge-border-radius: 10px;
 
 .btn-ol-blurple {
   color: $dc-blurple;
+  -webkit-transition: drop-shadow 0.3s ease;
   --bs-btn-bg: transtarent;
   --bs-btn-border-color: var(--dc-blurple);
   --bs-btn-hover-color: var(--bs-white);
@@ -152,11 +162,15 @@ $badge-border-radius: 10px;
 
 .btn-ol-blurple:hover {
   background: $dc-blurple;
-  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-primary) 75%, rgba(100, 100, 100, 0)));
+  -webkit-filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0)))
+                  drop-shadow(0 0 10px color-mix(in srgb, var(--dc-blurple) 75%, rgba(100, 100, 100, 0)));
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0)))
+          drop-shadow(0 0 10px color-mix(in srgb, var(--dc-blurple) 75%, rgba(100, 100, 100, 0)));
 }
 
 .btn-ol-red {
   color: $dc-red;
+  -webkit-transition: drop-shadow 0.3s ease;
   --bs-btn-bg: transtarent;
   --bs-btn-border-color: var(--dc-red);
   --bs-btn-hover-color: var(--bs-white);
@@ -170,7 +184,10 @@ $badge-border-radius: 10px;
 
 .btn-ol-red:hover {
   background: $dc-red;
-  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--bs-danger) 75%, rgba(100, 100, 100, 0)));
+  -webkit-filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0)))
+                  drop-shadow(0 0 10px color-mix(in srgb, var(--dc-red) 75%, rgba(100, 100, 100, 0)));
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0)))
+          drop-shadow(0 0 10px color-mix(in srgb, var(--dc-red) 75%, rgba(100, 100, 100, 0)));
 }
 
 .btn-blurple {
@@ -178,12 +195,24 @@ $badge-border-radius: 10px;
   background: $dc-blurple;
   --bs-btn-border-color: var(--dc-blurple);
   --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: #{shade-color($dc-blurple, 10%)};
-  --bs-btn-hover-border-color: #{shade-color($dc-blurple, 10%)};
+  --bs-btn-hover-bg: var(--dc-blurple);
+  --bs-btn-hover-border-color: var(--dc-blurple);
   --bs-btn-focus-shadow-rgb: var(--dc-blurple);
   --bs-btn-active-color: var(--bs-white);
   --bs-btn-active-bg: #{shade-color($dc-blurple, 20%)};
   --bs-btn-active-border-color: #{shade-color($dc-blurple, 20%)};
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-blurple:hover {
+  box-shadow: 0 0 20px color-mix(in srgb, var(--dc-blurple) 75%, rgba(100, 100, 100, 0));
+}
+
+.btn-expand {
+  color: var(--bhq-link);
+  background: none;
+  border: none;
 }
 
 .text-bg-red {

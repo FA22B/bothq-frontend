@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,13 @@ export class NavbarComponent {
   @Output() themeEvent = new EventEmitter<string>()
   @Output() loginEvent = new EventEmitter<boolean>()
   @Output() sidebarOpenEvent = new EventEmitter<void>()
+
+  constructor(private router: Router) {
+  }
+
+  goTo(route: string) {
+    this.router.navigateByUrl('/' + route)
+  }
 
   themeToggle(theme: string) {
     this.themeEvent.emit(theme)

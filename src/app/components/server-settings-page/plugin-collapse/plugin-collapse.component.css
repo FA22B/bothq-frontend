@@ -1,0 +1,45 @@
+#frame {
+  position: relative;
+  border-radius: 30px;
+  margin-top: 0;
+  margin-bottom: 9rem;
+}
+
+.overflowContainer {
+  width: 100%;
+  position: absolute;
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 30px;
+  -webkit-backdrop-filter: blur(10px);
+  background-color: color-mix(in srgb, var(--bhq-deep-background) 65%, rgba(100, 100, 100, 0));
+}
+
+.form-check-input {
+  scale: 2;
+}
+
+.badge {
+  scale: 0.9;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: -10px;
+  filter: drop-shadow(0 5px 5px color-mix(in srgb, var(--bhq-shadow) 25%, rgba(100, 100, 100, 0))) drop-shadow(0 0 10px color-mix(in srgb, var(--dc-red) 75%, rgba(100, 100, 100, 0)));
+}
+
+.bi-gear-fill {
+  scale: 1.5;
+  transition: transform 0.5s ease-in-out;
+  margin-left: 0.75em;
+}
+
+.btn-gear {
+  padding: 0.25em 0.75em 0.5em;
+  margin-right: 1rem;
+}
+
+.btn-gear:hover {
+  .bi-gear-fill {
+    transform: rotateZ(180deg);
+  }
+}

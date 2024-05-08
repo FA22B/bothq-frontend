@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {NavbarComponent} from "./components/navbar/navbar.component";
-import {CarouselComponent} from "./components/carousel/carousel.component";
-import {SidebarComponent} from "./components/sidebar/sidebar.component";
+import {CarouselComponent} from "./components/landing-page/carousel/carousel.component";
+import {SidebarComponent} from "./components/sidebar-components/sidebar/sidebar.component";
 import {AuthService} from "./services/auth/auth.service";
 
 @Component({
@@ -18,6 +18,10 @@ export class AppComponent {
 
   constructor(public authService: AuthService) {
     this.theme = this.getPreferredTheme()
+  }
+
+  ngOnInit() {
+    this.getSidebar()
   }
 
   /**
@@ -83,17 +87,32 @@ export class AppComponent {
     window.location.href = this.authService.getLoginAddress()
   }
 
+  getSidebar() {
+    let sidebar = localStorage.getItem('sidebar')
+    if (sidebar == 'open') {
+      this.openSidebar()
+    } else {
+      this.closeSidebar()
+    }
+  }
+
   openSidebar() {
-    // @ts-ignore
-    document.getElementById("mySidebar").style.width = "350px";
-    // @ts-ignore
-    document.getElementById("main").style.marginLeft = "350px";
+    let sideBar = document.getElementById("mySidebar")
+    if (sideBar) sideBar.style.width = "350px";
+
+    let main = document.getElementById("main")
+    if (main) main.style.marginLeft = "350px";
+
+    localStorage.setItem('sidebar', 'open')
   }
 
   closeSidebar() {
-    // @ts-ignore
-    document.getElementById("mySidebar").style.width = "0";
-    // @ts-ignore
-    document.getElementById("main").style.marginLeft = "0";
+    let sideBar = document.getElementById("mySidebar")
+    if (sideBar) sideBar.style.width = "0";
+
+    let main = document.getElementById("main")
+    if (main) main.style.marginLeft = "0";
+
+    localStorage.setItem('sidebar', 'closed')
   }
 }
