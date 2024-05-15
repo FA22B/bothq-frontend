@@ -1,4 +1,4 @@
-<div class="container" id="mainFrame">
+<!--<div class="container" id="mainFrame">
   <div class="row">
     <div class="col justify-content-start text-start">
       <h1 style="margin-left: 1.75rem">{{ this.plugin?.name }}</h1>
@@ -40,4 +40,92 @@
       </div>
     </div>
   </div>
+</div>-->
+
+
+<!-- src/app/components/plugin/plugin.component.html -->
+
+<div *ngIf="pluginData$ | async as pluginData">
+  <h1>{{ pluginData.displayName }}</h1>
+  <ng-container *ngFor="let item of pluginData.value">
+    <ng-container [ngSwitch]="item.type">
+      <!-- Checkbox Component -->
+      <div *ngSwitchCase="'checkbox'">
+        <label>
+          <input [checked]="item.value" [disabled]="!item.enabled" type="checkbox"/>
+          {{ item.displayName }}
+        </label>
+      </div>
+      <!-- Group Component -->
+      <div *ngSwitchCase="'group'">
+        <h2>{{ item.displayName }}</h2>
+        <ng-container *ngFor="let subItem of item.value">
+          <ng-container [ngSwitch]="subItem.type">
+            <!-- Checkbox Component -->
+            <div *ngSwitchCase="'checkbox'">
+              <label>
+                <input [checked]="subItem.value" [disabled]="!subItem.enabled" type="checkbox"/>
+                {{ subItem.displayName }}
+              </label>
+            </div>
+            <!-- Slider Component -->
+            <div *ngSwitchCase="'slider'">
+              <label>
+                {{ subItem.displayName }}
+                <input
+                  [disabled]="!subItem.enabled"
+                  [max]="subItem.maxValue"
+                  [min]="subItem.minValue"
+                  [step]="subItem.step"
+                  [value]="subItem.value"
+                  type="range"
+                />
+              </label>
+            </div>
+            <!-- Group Component Recursion -->
+            <div *ngSwitchCase="'group'">
+              <h2>{{ subItem.displayName }}</h2>
+              <ng-container *ngFor="let nestedItem of subItem.value">
+                <ng-container [ngSwitch]="nestedItem.type">
+                  <div *ngSwitchCase="'checkbox'">
+                    <label>
+                      <input [checked]="nestedItem.value" [disabled]="!nestedItem.enabled" type="checkbox"/>
+                      {{ nestedItem.displayName }}
+                    </label>
+                  </div>
+                  <div *ngSwitchCase="'slider'">
+                    <label>
+                      {{ nestedItem.displayName }}
+                      <input
+                        [disabled]="!nestedItem.enabled"
+                        [max]="nestedItem.maxValue"
+                        [min]="nestedItem.minValue"
+                        [step]="nestedItem.step"
+                        [value]="nestedItem.value"
+                        type="range"
+                      />
+                    </label>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <!-- Slider Component -->
+      <div *ngSwitchCase="'slider'">
+        <label>
+          {{ item.displayName }}
+          <input
+            [disabled]="!item.enabled"
+            [max]="item.maxValue"
+            [min]="item.minValue"
+            [step]="item.step"
+            [value]="item.value"
+            type="range"
+          />
+        </label>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
