@@ -1,52 +1,39 @@
-export interface PluginData extends GroupValue {
+export interface PluginData {
   statusCode: number;
   message: string;
   pluginId: number;
-}
-
-export type PluginValue = CheckboxValue | GroupValue | SliderValue | ComboboxValue | RadioboxValue | TextboxValue;
-
-
-export interface ConfigValue {
   type: string;
   uniqueId: string;
   enabled: boolean;
   displayName: string;
-  description?: string;
-  value: any;
-}
-
-export interface CheckboxValue extends ConfigValue {
-  type: 'checkbox';
-  value: boolean;
-}
-
-export interface RadioboxValue extends ConfigValue {
-  type: 'radiobox';
-  value: string;
-  options: string[];
-}
-
-export interface TextboxValue extends ConfigValue {
-  type: 'textbox';
-  value: string;
-}
-
-export interface GroupValue extends ConfigValue {
-  type: 'group';
   value: PluginValue[];
 }
 
-export interface SliderValue extends ConfigValue {
+export type PluginValue = CheckboxValue | GroupValue | SliderValue;
+
+export interface CheckboxValue {
+  type: 'checkbox';
+  uniqueId: string;
+  enabled: boolean;
+  displayName: string;
+  value: boolean;
+}
+
+export interface GroupValue {
+  type: 'group';
+  uniqueId: string;
+  enabled: boolean;
+  displayName: string;
+  value: PluginValue[];
+}
+
+export interface SliderValue {
   type: 'slider';
+  uniqueId: string;
+  enabled: boolean;
+  displayName: string;
   value: number;
   minValue: number;
   maxValue: number;
   step: number;
-}
-
-export interface ComboboxValue extends ConfigValue {
-  type: 'combobox';
-  value: string;
-  options: string[];
 }
