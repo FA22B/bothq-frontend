@@ -1,5 +1,5 @@
 .navbar {
-  background-color: color-mix(in srgb, var(--bhq-background) 65%, rgba(100, 100, 100, 0));
+  background: linear-gradient(var(--bhq-background) 0%, rgba(0, 0, 0, 0) 100%);
   backdrop-filter: blur(10px);
 }
 
