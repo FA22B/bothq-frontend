@@ -1,0 +1,35 @@
+#mainFrame {
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 40px;
+  background: var(--bhq-deep-background);
+  padding: 1rem 2.5rem 2.5rem;
+}
+
+#secondaryFrame {
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 20px;
+  background: var(--bhq-medium-background);
+  padding: 2.5rem;
+  margin-top: 1rem;
+  margin-bottom: -0.75rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+#secondaryFrame::-webkit-scrollbar {
+  display: none;
+}
+
+.bi-circle-fill {
+  scale: 1.5;
+  margin-top: 1.25rem;
+  margin-right: 2.5rem;
+  color: var(--dc-red);
+}
+
+.install-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

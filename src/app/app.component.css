@@ -1,0 +1,13 @@
+html {
+  min-height: 100vh;
+  background-color: var(--bhq-background);
+}
+
+body {
+  background-color: var(--bhq-background);
+  padding: 5rem;
+}
+
+#main {
+  transition: margin-left ease .5s;
+}

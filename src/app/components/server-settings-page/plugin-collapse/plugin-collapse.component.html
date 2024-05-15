@@ -1,0 +1,63 @@
+<div [attr.style]="'z-index: ' + zIndex" class="container" id="frame">
+  @if (this.bhqplugin.isNew) {
+    <h3 style="padding: 0; margin: 0"><span class="badge text-bg-red">New</span></h3>
+  }
+  <div [attr.id]="'overflow' + nameConcat()" class="overflowContainer">
+    <div class="row" style="margin: 2rem 1rem 0">
+      <div class="col-auto justify-content-start text-start">
+        <h4>{{ bhqplugin.name }}</h4>
+      </div>
+      <div class="col justify-content-end text-end">
+        <div class="form-check form-switch" style="float: right">
+          <input class="form-check-input" role="switch" type="checkbox">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div [attr.id]="'collapse' + nameConcat()" class="collapse">
+        <div class="container text-start" style="padding: 2rem 1.5rem 0">
+          <h5>Description</h5>
+          {{ bhqplugin.description }}
+        </div>
+        <div class="container text-end justify-content-end align-content-end" style="margin-top: 1rem">
+          <button (click)="pluginSettings()" class="btn btn-gear btn-expand">
+            Options
+            <svg class="bi bi-gear-fill" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                 xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      @if (this.collapsed) {
+        <button (click)="open()" [attr.aria-controls]="'collapse' + nameConcat()"
+                [attr.data-bs-target]="'#collapse' + nameConcat()"
+                aria-expanded="false"
+                class="btn btn-expand"
+                data-bs-toggle="collapse" style="height: 50px">
+          <svg class="bi bi-caret-down-fill" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+               xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+          </svg>
+        </button>
+      } @else {
+        <button (click)="collapse()" [attr.aria-controls]="'collapse' + nameConcat()"
+                [attr.data-bs-target]="'#collapse' + nameConcat()"
+                aria-expanded="false"
+                class="btn btn-expand"
+                data-bs-toggle="collapse" style="height: 50px">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-caret-up-fill"
+               viewBox="0 0 16 16">
+            <path
+              d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+          </svg>
+        </button>
+      }
+    </div>
+  </div>
+</div>

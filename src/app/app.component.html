@@ -1,1 +1,11 @@
-<router-outlet />
+<!doctype html>
+<html [attr.data-bs-theme]=this.theme lang="en">
+<app-navbar (loginEvent)="toggleLogin($event)" (sidebarOpenEvent)="openSidebar()"
+            (themeEvent)="receiveTheme($event)" [appTheme]="this.theme" [loggedIn]="this.authService.loggedIn"
+></app-navbar>
+<app-sidebar (loginEvent)="toggleLogin($event)" (sidebarCloseEvent)="closeSidebar()"
+             [loggedIn]="this.authService.loggedIn"></app-sidebar>
+<body id="main">
+<router-outlet/>
+</body>
+</html>
