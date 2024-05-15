@@ -24,3 +24,11 @@
   border: solid 1px var(--bhq-grey-border);
   border-radius: 25px;
 }
+
+.dropdown-menu {
+  border-radius: 15px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
