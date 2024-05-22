@@ -1,0 +1,24 @@
+<div [attr.id]="frame" class="container">
+  @if (header) {
+    <h3>{{ item.displayName }}</h3>
+  } @else {
+    <h2>Options</h2>
+  }
+  <ng-container *ngFor="let nestedItem of item.value">
+    <div *ngIf="nestedItem.type == 'checkbox'" class="option">
+      <app-checkbox [item]="nestedItem"></app-checkbox>
+    </div>
+
+    <div *ngIf="nestedItem.type == 'slider'" class="option">
+      <app-slider [item]="nestedItem"></app-slider>
+    </div>
+
+    <div *ngIf="nestedItem.type == 'group'" class="option">
+      <app-group [frame]="'noFrame'" [item]="nestedItem"></app-group>
+    </div>
+
+    <div *ngIf="nestedItem.type == 'select'" class="option">
+      <app-select [item]="nestedItem"></app-select>
+    </div>
+  </ng-container>
+</div>

@@ -17,6 +17,10 @@ export class PluginListComponent {
     this.pluginList = dataservice.pluginList
   }
 
+  getSelectedPlugin() {
+    return this.dataservice.selectedPlugin
+  }
+
   pluginSettings(plugin: BHQPlugin) {
     this.dataservice.selectPlugin(plugin)
 
