@@ -1,13 +1,15 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CardComponent} from "../../landing-page/card/card.component";
 import {PluginListComponent} from "../plugin-list/plugin-list.component";
+import {ServerListComponent} from "../server-list/server-list.component";
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [
     CardComponent,
-    PluginListComponent
+    PluginListComponent,
+    ServerListComponent
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
