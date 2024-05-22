@@ -1,0 +1,27 @@
+#mainFrame {
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 40px;
+  background: var(--bhq-deep-background);
+  padding: 2.5rem;
+}
+
+#secondaryFrame {
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 20px;
+  background: var(--bhq-medium-background);
+  padding: 2.5rem;
+  margin-top: 1rem;
+}
+
+#noFrame {
+  border-top: solid 1px var(--bhq-grey-border);
+  padding: 2rem 0 0;
+}
+
+.container {
+  margin: 2rem 0 0;
+}
+
+.option {
+  margin: 0.5rem 0;
+}
