@@ -3,6 +3,8 @@ import {PluginDataService} from "../../services/plugin-data/plugin-data.service"
 import {PluginData} from "../../models/plugin-data.model";
 import {AsyncPipe, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
 import {Observable} from "rxjs";
+import {SliderComponent} from "./slider/slider.component";
+import {GroupComponent} from "./group/group.component";
 
 @Component({
   selector: 'app-plugin-settings',
@@ -12,7 +14,9 @@ import {Observable} from "rxjs";
     NgIf,
     NgForOf,
     NgSwitchCase,
-    AsyncPipe
+    AsyncPipe,
+    SliderComponent,
+    GroupComponent
   ],
   templateUrl: './plugin-settings.component.html',
   styleUrl: './plugin-settings.component.css'
@@ -21,6 +25,7 @@ export class PluginSettingsComponent {
   pluginData$: Observable<PluginData> | undefined;
 
   //plugin?: BHQPlugin
+  protected readonly SliderComponent = SliderComponent;
 
   constructor(public pluginDataService: PluginDataService) {
   }
@@ -28,7 +33,7 @@ export class PluginSettingsComponent {
   ngOnInit(): void {
     //this.plugin = this.pluginDataService.selectedPlugin // Old Mockdata
 
-    this.pluginData$ = this.pluginDataService.getPluginData();
+    this.pluginData$ = this.pluginDataService.getSelectedPluginData();
 
     /*    this.pluginDataService.getPluginData().subscribe({
             next: (data: PluginData) => {
