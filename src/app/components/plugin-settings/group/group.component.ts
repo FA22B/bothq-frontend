@@ -3,9 +3,7 @@ import {NgForOf, NgIf, NgSwitchCase} from "@angular/common";
 import {GroupValue} from "../../../models/plugin-data.model";
 import {SliderComponent} from "../slider/slider.component";
 import {CheckboxComponent} from "../checkbox/checkbox.component";
-import {ComboboxComponent} from "../combobox/combobox.component";
-import {RadioboxComponent} from "../radiobox/radiobox.component";
-import {TextboxComponent} from "../textbox/textbox.component";
+import {SelectComponent} from "../select/select.component";
 
 @Component({
   selector: 'app-group',
@@ -16,9 +14,7 @@ import {TextboxComponent} from "../textbox/textbox.component";
     NgSwitchCase,
     SliderComponent,
     CheckboxComponent,
-    ComboboxComponent,
-    RadioboxComponent,
-    TextboxComponent
+    SelectComponent
   ],
   templateUrl: './group.component.html',
   styleUrl: './group.component.css'

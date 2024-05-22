@@ -1,0 +1,29 @@
+.dropdown-toggle {
+  background-color: var(--bhq-deep-background);
+  border: solid 1px var(--bhq-grey-border);
+  border-radius: 25px;
+}
+
+.dropdown-menu {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: color-mix(in srgb, var(--bhq-deep-background) 50%, rgba(100, 100, 100, 0));
+  border-radius: 15px;
+  min-width: 0;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: color-mix(in srgb, var(--bhq-grey-border) 25%, rgba(100, 100, 100, 0));
+}
+
+.dropdown-item:active {
+  background: color-mix(in srgb, var(--bhq-grey-border) 50%, rgba(100, 100, 100, 0));
+}
+
+.dropdown {
+  float: right;
+}
