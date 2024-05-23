@@ -5,6 +5,7 @@ import {AsyncPipe, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common"
 import {Observable} from "rxjs";
 import {SliderComponent} from "./slider/slider.component";
 import {GroupComponent} from "./group/group.component";
+import {CheckboxComponent} from "./checkbox/checkbox.component";
 
 @Component({
   selector: 'app-plugin-settings',
@@ -16,7 +17,8 @@ import {GroupComponent} from "./group/group.component";
     NgSwitchCase,
     AsyncPipe,
     SliderComponent,
-    GroupComponent
+    GroupComponent,
+    CheckboxComponent
   ],
   templateUrl: './plugin-settings.component.html',
   styleUrl: './plugin-settings.component.css'
