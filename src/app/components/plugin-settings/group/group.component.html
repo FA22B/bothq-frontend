@@ -17,8 +17,16 @@
       <app-group [frame]="'noFrame'" [item]="nestedItem"></app-group>
     </div>
 
-    <div *ngIf="nestedItem.type == 'select'" class="option">
-      <app-select [item]="nestedItem"></app-select>
+    <div *ngIf="nestedItem.type == 'combobox'" class="option">
+      <app-combobox [item]="nestedItem"></app-combobox>
+    </div>
+
+    <div *ngIf="nestedItem.type == 'radiobox'" class="option">
+      <app-radiobox [item]="nestedItem"></app-radiobox>
+    </div>
+
+    <div *ngIf="nestedItem.type == 'textbox'" class="option">
+      <app-textbox [item]="nestedItem"></app-textbox>
     </div>
   </ng-container>
 </div>
