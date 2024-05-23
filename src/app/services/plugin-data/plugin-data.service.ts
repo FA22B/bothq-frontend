@@ -45,6 +45,29 @@ export class PluginDataService {
         minValue: 0,
         maxValue: 100,
         step: 1
+      },
+      {
+        type: 'group',
+        uniqueId: 'jokeCategories',
+        enabled: true,
+        displayName: 'Joke Categories',
+        value: [
+          {
+            type: 'combobox',
+            uniqueId: 'jokeCategory',
+            enabled: true,
+            displayName: 'Joke Category',
+            value: 'Choose...',
+            options: ['Movie', 'Food', 'Celebrity', 'Science', 'Sport', 'Political', 'Religion', 'Animal', 'History', 'Music', 'Travel', 'Career', 'Money', 'Fashion']
+          },
+          {
+            type: 'checkbox',
+            uniqueId: 'excludeCategory',
+            enabled: true,
+            displayName: 'Exclude Category',
+            value: false
+          }
+        ]
       }
     ]
   },
@@ -179,6 +202,14 @@ export class PluginDataService {
           enabled: true,
           displayName: 'Enable Auto Nickname',
           value: false
+        },
+        {
+          type: 'radiobox',
+          uniqueId: 'nicknameMode',
+          enabled: true,
+          displayName: 'Nickname Mode',
+          value: 'empty',
+          options: ['Random', 'Custom', 'Empty', 'Reset', 'Incremental']
         }
       ]
     },
@@ -198,6 +229,13 @@ export class PluginDataService {
           enabled: true,
           displayName: 'Enable Auto Message',
           value: false
+        },
+        {
+          type: 'textbox',
+          uniqueId: 'message',
+          enabled: true,
+          displayName: 'Message',
+          value: ''
         }
       ]
     }]

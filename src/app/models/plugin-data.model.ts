@@ -4,7 +4,7 @@ export interface PluginData extends GroupValue {
   pluginId: number;
 }
 
-export type PluginValue = CheckboxValue | GroupValue | SliderValue | SelectValue;
+export type PluginValue = CheckboxValue | GroupValue | SliderValue | ComboboxValue | RadioboxValue | TextboxValue;
 
 
 export interface ConfigValue {
@@ -21,6 +21,17 @@ export interface CheckboxValue extends ConfigValue {
   value: boolean;
 }
 
+export interface RadioboxValue extends ConfigValue {
+  type: 'radiobox';
+  value: string;
+  options: string[];
+}
+
+export interface TextboxValue extends ConfigValue {
+  type: 'textbox';
+  value: string;
+}
+
 export interface GroupValue extends ConfigValue {
   type: 'group';
   value: PluginValue[];
@@ -34,8 +45,8 @@ export interface SliderValue extends ConfigValue {
   step: number;
 }
 
-export interface SelectValue extends ConfigValue {
-  type: 'select';
+export interface ComboboxValue extends ConfigValue {
+  type: 'combobox';
   value: string;
   options: string[];
 }
