@@ -1,0 +1,13 @@
+<div class="container">
+  <label style="font-size: x-large">
+    {{ item.displayName }}
+  </label>
+  @for (option of item.options; track $index) {
+    <div class="form-check" style="float: right; margin-left: 1rem">
+      <input class="form-check-input" [attr.id]="'flexRadioDefault' + $index" name="flexRadioDefault" type="radio">
+      <label class="form-check-label" [attr.for]="'flexRadioDefault' + $index">
+        {{ option }}
+      </label>
+    </div>
+  }
+</div>
