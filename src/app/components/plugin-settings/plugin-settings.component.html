@@ -1,8 +1,16 @@
 <div *ngIf="pluginData$ | async as pluginData" class="container" id="mainFrame" style="margin-top: 5rem">
-  <div style="padding-left: 2.5rem">
-    <h1>{{ pluginData.displayName }}</h1>
-    <div style="width: 50%; font-size: larger; margin-bottom: 2rem">
-      {{ pluginData.description }}
+  <div class="row" style="padding-left: 2.5rem">
+    <div class="col">
+      <h1>{{ pluginData.displayName }}</h1>
+      <div style="width: 50%; font-size: larger; margin-bottom: 2rem">
+        {{ pluginData.description }}
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check form-switch" style="float: right">
+        <input [checked]="pluginData.enabled" class="form-check-input" id="Option1Toggle" role="switch"
+               type="checkbox">
+      </div>
     </div>
   </div>
   <app-group [frame]="'secondaryFrame'" [header]="false" [item]="pluginData"></app-group>
