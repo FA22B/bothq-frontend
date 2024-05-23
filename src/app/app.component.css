@@ -1,11 +1,12 @@
 html {
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bhq-background);
 }
 
 body {
   background-color: var(--bhq-background);
-  padding: 5rem;
+  margin: 0;
+  padding: 0;
 }
 
 #main {
