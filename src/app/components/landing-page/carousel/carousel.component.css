@@ -1,5 +1,5 @@
 .container-fluid {
-  margin: 0;
+  margin: -3.5rem 0 0;
 }
 
 .carousel-inner {
@@ -27,7 +27,7 @@
 }
 
 .carousel-item {
-  margin-top: 8rem;
+  margin-top: 14rem;
   z-index: 1;
 }
 

@@ -17,6 +17,7 @@
   scale: 2;
   margin-top: 2rem;
   margin-right: 4rem;
+  cursor: pointer;
 }
 
 .dropdown-toggle {
