@@ -9,7 +9,7 @@
       </button>
     }
   </div>
-  <div (scroll)="scrolling()" (transitionend)="scrolling()" class="container" id="lists">
+  <div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="lists">
     <div id="shadowTop"></div>
     <div class="row">
       <div class="container server-list" style="min-width: 250px; margin-bottom: 2rem">

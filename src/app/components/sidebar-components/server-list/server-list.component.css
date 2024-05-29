@@ -4,7 +4,7 @@ h3 {
 }
 
 #server-list-group {
-  max-height: 40dvh;
+  max-height: 50dvh;
   position: relative;
   background: var(--bhq-medium-background);
   border: solid 1px var(--bhq-grey-border);

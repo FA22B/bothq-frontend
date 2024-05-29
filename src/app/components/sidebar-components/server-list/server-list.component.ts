@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {BHQServer} from "../../../bhqserver";
 import {ServerDataService} from "../../../services/server-data/server-data.service";
+import {ServerManagementService} from "../../../services/server-management/server-management.service";
+import {DiscordGuild} from "../../../../types";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-server-list',
@@ -10,14 +12,21 @@ import {ServerDataService} from "../../../services/server-data/server-data.servi
   styleUrl: './server-list.component.css'
 })
 export class ServerListComponent {
-  serverList?: BHQServer[]
+  serverList?: DiscordGuild[]
 
-  constructor(public dataservice: ServerDataService) {
-    this.serverList = dataservice.serverList
+  constructor(private router: Router, public dataservice: ServerDataService, private serverManagementService: ServerManagementService) {
+
+    this.serverManagementService.getAllServers().subscribe(servers => {
+      this.serverList = servers
+    })
   }
 
-  selectServer(server: BHQServer) {
-    this.dataservice.selectServer(server);
+  serverSettings(serverId: string) {
+    this.dataservice.selectServer(serverId);
+
+    this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
+      this.router.navigateByUrl('/server-settings');
+    });
   }
 
   scrolling() {

@@ -5,19 +5,17 @@ import {BHQServer} from "../../bhqserver";
   providedIn: 'root'
 })
 export class ServerDataService {
-  serverList = [new BHQServer('Chuck Norris Server'),
-    new BHQServer('Server A'),
-    new BHQServer('Server B'),]
+  serverList: BHQServer[] = []
 
-  public selectedServer?: BHQServer
+  public selectedServer?: string
 
   constructor() {
     let server = sessionStorage.getItem('selectedServer')
-    if (server) this.selectedServer = this.serverList.find(s => s.name === server)
+    if (server) this.selectedServer = server
   }
 
-  selectServer(server: BHQServer) {
-    this.selectedServer = server
-    sessionStorage.setItem('selectedServer', server.name)
+  selectServer(serverId: string) {
+    this.selectedServer = serverId
+    sessionStorage.setItem('selectedServer', serverId)
   }
 }
