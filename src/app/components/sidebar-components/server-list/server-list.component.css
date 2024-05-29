@@ -3,7 +3,7 @@ h3 {
   color: var(--bs-body-color);
 }
 
-#plugin-list-group {
+#server-list-group {
   max-height: 40dvh;
   position: relative;
   background: var(--bhq-medium-background);
@@ -16,7 +16,7 @@ h3 {
   scrollbar-width: none;
 }
 
-#plugin-list-group::-webkit-scrollbar {
+#server-list-group::-webkit-scrollbar {
   display: none;
 }
 
@@ -45,7 +45,7 @@ h3 {
   filter: drop-shadow(0 10px 15px var(--bhq-shadow));
 }
 
-#shadowTop {
+#serverShadowTop {
   pointer-events: none;
   background: linear-gradient(180deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
   position: sticky;
@@ -59,7 +59,7 @@ h3 {
   transition: opacity 0.3s linear;
 }
 
-#shadowBottom {
+#serverShadowBottom {
   pointer-events: none;
   background: linear-gradient(0deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
   position: sticky;

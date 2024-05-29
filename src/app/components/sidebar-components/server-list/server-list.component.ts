@@ -16,7 +16,7 @@ export class ServerListComponent {
     this.serverList = dataservice.serverList
   }
 
-  selectServer(server : BHQServer) {
+  selectServer(server: BHQServer) {
     this.dataservice.selectServer(server);
   }
 
@@ -25,19 +25,19 @@ export class ServerListComponent {
     // @ts-ignore
     if (element.scrollTop > 5) {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 1
+      document.getElementById('serverShadowTop').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 0
+      document.getElementById('serverShadowTop').style.opacity = 0
     }
 
     // @ts-ignore
     if ((element.scrollHeight - element.scrollTop - element.clientHeight) > 5) {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 1
+      document.getElementById('serverShadowBottom').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 0
+      document.getElementById('serverShadowBottom').style.opacity = 0
     }
   }
 }

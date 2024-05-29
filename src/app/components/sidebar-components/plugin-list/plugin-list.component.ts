@@ -30,19 +30,19 @@ export class PluginListComponent {
     // @ts-ignore
     if (element.scrollTop > 5) {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 1
+      document.getElementById('pluginShadowTop').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 0
+      document.getElementById('pluginShadowTop').style.opacity = 0
     }
 
     // @ts-ignore
     if ((element.scrollHeight - element.scrollTop - element.clientHeight) > 5) {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 1
+      document.getElementById('pluginShadowBottom').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 0
+      document.getElementById('pluginShadowBottom').style.opacity = 0
     }
   }
 }

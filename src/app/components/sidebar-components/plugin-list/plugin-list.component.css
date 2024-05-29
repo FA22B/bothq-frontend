@@ -4,7 +4,7 @@ h3 {
 }
 
 #plugin-list-group {
-  max-height: 40dvh;
+  max-height: 80dvh;
   position: relative;
   background: var(--bhq-medium-background);
   border: solid 1px var(--bhq-grey-border);
@@ -45,7 +45,7 @@ h3 {
   filter: drop-shadow(0 10px 15px var(--bhq-shadow));
 }
 
-#shadowTop {
+#pluginShadowTop {
   pointer-events: none;
   background: linear-gradient(180deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
   position: sticky;
@@ -59,7 +59,7 @@ h3 {
   transition: opacity 0.3s linear;
 }
 
-#shadowBottom {
+#pluginShadowBottom {
   pointer-events: none;
   background: linear-gradient(0deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
   position: sticky;

@@ -26,4 +26,25 @@ export class SidebarComponent {
   logIn() {
     this.loginEvent.emit(true)
   }
+
+  scrolling() {
+    let element = document.getElementById('lists')
+    // @ts-ignore
+    if (element.scrollTop > 5) {
+      // @ts-ignore
+      document.getElementById('shadowTop').style.opacity = 1
+    } else {
+      // @ts-ignore
+      document.getElementById('shadowTop').style.opacity = 0
+    }
+
+    // @ts-ignore
+    if ((element.scrollHeight - element.scrollTop - element.clientHeight) > 5) {
+      // @ts-ignore
+      document.getElementById('shadowBottom').style.opacity = 1
+    } else {
+      // @ts-ignore
+      document.getElementById('shadowBottom').style.opacity = 0
+    }
+  }
 }

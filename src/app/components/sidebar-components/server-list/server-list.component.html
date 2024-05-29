@@ -1,14 +1,14 @@
 <h3>Servers</h3>
 <div (scroll)="scrolling()" (transitionend)="scrolling()" class="container" id="server-list-group">
-  <div id="shadowTop"></div>
+  <div id="serverShadowTop"></div>
   <div class="list-group" id="list-tab" role="tablist">
     @for (server of serverList; track $index) {
-    <button [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
-            data-bs-toggle="list"
-            [attr.href]="'#list-'+(server.name)"
-            [attr.id]="'list-'+(server.name)+'-list'" role="tab" (click)="selectServer(server)">{{ server.name }}
-    </button>
+      <button [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              [attr.href]="'#list-'+(server.name)"
+              [attr.id]="'list-'+(server.name)+'-list'" role="tab" (click)="selectServer(server)">{{ server.name }}
+      </button>
     }
   </div>
-  <div id="shadowBottom"></div>
+  <div id="serverShadowBottom"></div>
 </div>

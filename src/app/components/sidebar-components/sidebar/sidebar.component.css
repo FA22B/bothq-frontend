@@ -1,5 +1,5 @@
 .sidebar {
-  height: 100%; /* 100% Full-height */
+  height: 100dvh; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
@@ -9,8 +9,15 @@
   overflow-x: hidden; /* Disable horizontal scroll */
   overflow-y: hidden; /* Disable vertical scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  transition: ease 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  padding-bottom: 80px; /* Place content 80px from the bottom */
+  transition: width ease 0.5s; /* 0.5 second transition effect to slide in the sidebar */
   /*box-shadow: 10px 0 40px color-mix(in srgb, var(--bhq-shadow) 75%, rgba(100, 100, 100, 0));*/
+}
+
+#lists {
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .btn-close {
@@ -24,4 +31,32 @@
   position: absolute;
   bottom: 1.25rem;
   right: 1.25rem;
+}
+
+#shadowTop {
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
+  position: sticky;
+  padding: 0;
+  top: -12px;
+  height: 75px;
+  width: 110%;
+  margin: -14px -12px -60px;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s linear;
+}
+
+#shadowBottom {
+  pointer-events: none;
+  background: linear-gradient(0deg, var(--bhq-shadow) -25%, rgba(0, 0, 0, 0) 100%);
+  position: sticky;
+  padding: 0;
+  bottom: -12px;
+  height: 75px;
+  width: 110%;
+  margin: -60px -12px -7px;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.3s linear;
 }
