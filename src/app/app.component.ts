@@ -5,11 +5,12 @@ import {CarouselComponent} from "./components/landing-page/carousel/carousel.com
 import {SidebarComponent} from "./components/sidebar-components/sidebar/sidebar.component";
 import {AuthService} from "./services/auth/auth.service";
 import {HttpClient} from "@angular/common/http";
+import {LogoutConfirmComponent} from "./components/logout-confirm/logout-confirm.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, CarouselComponent, SidebarComponent],
+  imports: [RouterOutlet, NavbarComponent, CarouselComponent, SidebarComponent, LogoutConfirmComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
