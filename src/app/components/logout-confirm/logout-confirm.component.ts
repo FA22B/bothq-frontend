@@ -11,6 +11,6 @@ export class LogoutConfirmComponent {
   @Output() loginEvent = new EventEmitter<boolean>();
 
   logOut() {
-    this.loginEvent.emit(false)
+    this.loginEvent.emit(true)
   }
 }
