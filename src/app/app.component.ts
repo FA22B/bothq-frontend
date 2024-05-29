@@ -4,6 +4,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {CarouselComponent} from "./components/landing-page/carousel/carousel.component";
 import {SidebarComponent} from "./components/sidebar-components/sidebar/sidebar.component";
 import {AuthService} from "./services/auth/auth.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
   title = 'BotHQ';
   theme = 'dark'
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService, private httpClient: HttpClient) {
     this.theme = this.getPreferredTheme()
   }
 
@@ -74,7 +75,7 @@ export class AppComponent {
    */
   toggleLogin($event: boolean) {
     if (this.authService.loggedIn) {
-      this.authService.loggedIn = false
+      this.logoutDiscord()
     } else {
       this.redirectDiscord()
     }
@@ -85,6 +86,14 @@ export class AppComponent {
    */
   redirectDiscord() {
     window.location.href = this.authService.getLoginAddress()
+  }
+
+  logoutDiscord() {
+    this.httpClient.get(this.authService.getLogoutAddress()).subscribe(
+      () => {
+        this.authService.loggedIn = false
+      }
+    )
   }
 
   getSidebar() {
