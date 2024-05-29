@@ -30,10 +30,6 @@ export class NavbarComponent {
     this.loginEvent.emit(true)
   }
 
-  logOut() {
-    this.loginEvent.emit(false)
-  }
-
   openSidebar() {
     this.sidebarOpenEvent.emit()
   }

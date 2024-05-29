@@ -1,0 +1,16 @@
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="logoutModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="logoutModalLabel">Are you sure you want to log out?</h1>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Cancel</button>
+        <button (click)="logOut()" class="btn btn-ol-red" data-bs-dismiss="modal"><strong>Logout</strong>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

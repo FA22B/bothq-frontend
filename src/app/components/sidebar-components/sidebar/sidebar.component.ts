@@ -24,8 +24,4 @@ export class SidebarComponent {
   logIn() {
     this.loginEvent.emit(true)
   }
-
-  logOut() {
-    this.loginEvent.emit(false)
-  }
 }
