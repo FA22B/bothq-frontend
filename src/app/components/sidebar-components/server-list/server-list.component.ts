@@ -1,48 +1,54 @@
 import {Component} from '@angular/core';
-import {BHQPlugin} from "../../../bhqplugin";
-import {Router} from "@angular/router";
-import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {ServerDataService} from "../../../services/server-data/server-data.service";
+import {ServerManagementService} from "../../../services/server-management/server-management.service";
+import {DiscordGuild} from "../../../../types";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
-  selector: 'app-plugin-list',
+  selector: 'app-server-list',
   standalone: true,
-  imports: [],
-  templateUrl: './plugin-list.component.html',
-  styleUrl: './plugin-list.component.css'
+  imports: [
+    RouterOutlet,
+    RouterLink
+  ],
+  templateUrl: './server-list.component.html',
+  styleUrl: './server-list.component.css'
 })
-export class PluginListComponent {
-  pluginList?: BHQPlugin[]
+export class ServerListComponent {
+  serverList?: DiscordGuild[]
 
-  constructor(private router: Router, public dataservice: PluginDataService) {
-    this.pluginList = dataservice.pluginList
+  constructor(private router: Router, public dataservice: ServerDataService, private serverManagementService: ServerManagementService) {
+
+    this.dataservice.getServers()
+    this.serverList = this.dataservice.getServerList()
   }
 
-  pluginSettings(plugin: BHQPlugin) {
-    this.dataservice.selectPlugin(plugin)
+  serverSettings(serverId: string) {
+    this.dataservice.selectServer(serverId);
 
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
-      this.router.navigateByUrl('/plugin-settings');
+      this.router.navigateByUrl('/server-settings');
     });
   }
 
   scrolling() {
-    let element = document.getElementById('plugin-list-group')
+    let element = document.getElementById('server-list-group')
     // @ts-ignore
     if (element.scrollTop > 5) {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 1
+      document.getElementById('serverShadowTop').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 0
+      document.getElementById('serverShadowTop').style.opacity = 0
     }
 
     // @ts-ignore
     if ((element.scrollHeight - element.scrollTop - element.clientHeight) > 5) {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 1
+      document.getElementById('serverShadowBottom').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 0
+      document.getElementById('serverShadowBottom').style.opacity = 0
     }
   }
 }

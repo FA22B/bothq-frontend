@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {BHQPlugin} from "../../../bhqplugin";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
 
 @Component({
   selector: 'app-plugin-list',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './plugin-list.component.html',
   styleUrl: './plugin-list.component.css'
 })
@@ -30,19 +32,19 @@ export class PluginListComponent {
     // @ts-ignore
     if (element.scrollTop > 5) {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 1
+      document.getElementById('pluginShadowTop').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowTop').style.opacity = 0
+      document.getElementById('pluginShadowTop').style.opacity = 0
     }
 
     // @ts-ignore
     if ((element.scrollHeight - element.scrollTop - element.clientHeight) > 5) {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 1
+      document.getElementById('pluginShadowBottom').style.opacity = 1
     } else {
       // @ts-ignore
-      document.getElementById('shadowBottom').style.opacity = 0
+      document.getElementById('pluginShadowBottom').style.opacity = 0
     }
   }
 }

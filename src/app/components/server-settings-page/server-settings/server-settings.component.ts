@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
 import {BHQPlugin} from "../../../bhqplugin";
 import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.component";
+import {ServerDataService} from "../../../services/server-data/server-data.service";
+import {DiscordGuild} from "../../../../types";
 
 @Component({
   selector: 'app-server-settings',
@@ -14,9 +16,12 @@ import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.compon
 })
 export class ServerSettingsComponent {
   pluginList?: BHQPlugin[]
+  server?: DiscordGuild
 
-  constructor(public dataservice: PluginDataService) {
+  constructor(public dataservice: PluginDataService, private serverDataService: ServerDataService) {
     this.pluginList = dataservice.pluginList
+
+    this.server = this.serverDataService.getSelectedServerData()
   }
 
 }

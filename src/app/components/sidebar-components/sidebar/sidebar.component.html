@@ -9,10 +9,18 @@
       </button>
     }
   </div>
-  <div class="container">
-    <div class="container plugin-list" style="min-width: 250px">
-      <app-plugin-list></app-plugin-list>
+  <div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="lists">
+    <div id="shadowTop"></div>
+    <div class="row">
+      <div class="container server-list" style="min-width: 250px; margin-bottom: 2rem">
+        <app-server-list></app-server-list>
+      </div>
     </div>
+    <div class="row">
+      <div class="container plugin-list" style="min-width: 250px">
+        <app-plugin-list></app-plugin-list>
+      </div>
+    </div>
+    <div id="shadowBottom"></div>
   </div>
-
 </div>

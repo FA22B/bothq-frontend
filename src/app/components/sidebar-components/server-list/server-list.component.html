@@ -1,14 +1,20 @@
-<h3>Server</h3>
-<div (scroll)="scrolling()" (transitionend)="scrolling()" class="container" id="server-list-group">
-  <div id="shadowTop"></div>
-  <div class="list-group" id="list-tab" role="tablist">
-    @for (server of serverList; track $index) {
-    <button [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
-            data-bs-toggle="list"
-            [attr.href]="'#list-'+(server.name)"
-            [attr.id]="'list-'+(server.name)+'-list'" role="tab" (click)="pluginSettings(plugin)">{{ plugin.name }}
-    </button>
+<h3>Servers</h3>
+<div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="server-list-group">
+  <div id="serverShadowTop"></div>
+  <div class="list-group" id="server-list-tab" role="tablist">
+    @if (serverList && serverList.length > 0) {
+      @for (server of serverList; track server.id) {
+        <a [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
+           data-bs-toggle="list"
+           [attr.routerLink]="'server-settings/'+(server.id)"
+           [attr.id]="'list-'+(server.name)+'-list'" role="tab"
+           (click)="this.serverSettings(server.id)">{{ server.name }}
+        </a>
+      }
+    } @else {
+      <a class="list-group-item list-group-item-action" role="tab">No servers found</a>
     }
   </div>
-  <div id="shadowBottom"></div>
+  <div id="serverShadowBottom"></div>
 </div>
+
