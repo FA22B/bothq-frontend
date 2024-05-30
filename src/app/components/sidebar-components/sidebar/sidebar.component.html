@@ -13,7 +13,7 @@
     <div id="shadowTop"></div>
     <div class="row">
       <div class="container server-list" style="min-width: 250px; margin-bottom: 2rem">
-        <app-server-list></app-server-list>
+        <app-server-list (loginEvent)="logIn()"></app-server-list>
       </div>
     </div>
     <div class="row">

@@ -20,6 +20,15 @@ h3 {
   display: none;
 }
 
+#loginPrompt {
+  margin-top: 0.5rem;
+  color: var(--bs-body-color);
+}
+
+.btn-ol-blurple {
+  margin-right: 1rem;
+}
+
 .list-group-item {
   justify-content: center;
   cursor: pointer;
