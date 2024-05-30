@@ -16,14 +16,10 @@ import {DiscordGuild} from "../../../../types";
 })
 export class ServerSettingsComponent {
   pluginList?: PluginData[]
-
-  constructor(public dataservice: PluginDataService) {
-    this.pluginList = this.dataservice.getPluginList()
-  pluginList?: BHQPlugin[]
   server?: DiscordGuild
 
   constructor(public dataservice: PluginDataService, private serverDataService: ServerDataService) {
-    this.pluginList = dataservice.pluginList
+    this.pluginList = this.dataservice.getPluginList() || []
 
     this.server = this.serverDataService.getSelectedServerData()
   }
