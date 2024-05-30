@@ -1,15 +1,15 @@
 <h3>Plugins</h3>
-<div (scroll)="scrolling()" (transitionend)="scrolling()" class="container" id="plugin-list-group">
-  <div id="shadowTop"></div>
-  <div class="list-group" id="list-tab" role="tablist">
-    @for (plugin of pluginList; track plugin.pluginId) {
-      <button [attr.aria-controls]="'list-'+(plugin.pluginId)" class="list-group-item list-group-item-action"
-              data-bs-toggle="list"
-              [attr.href]="'#list-'+(plugin.pluginId)"
-              [attr.id]="'list-'+(plugin.pluginId)+'-list'" role="tab"
-              (click)="pluginSettings(plugin.pluginId)">{{ plugin.displayName }}
-      </button>
+<div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="plugin-list-group">
+  <div id="pluginShadowTop"></div>
+  <div class="list-group" id="plugin-list-tab" role="tablist">
+    @for (plugin of pluginList; track $index) {
+      <a [attr.aria-controls]="'list-'+(plugin.name)" class="list-group-item list-group-item-action"
+         data-bs-toggle="list"
+         [attr.routerLink]="'plugin-settings/'+(plugin.name)"
+         [attr.id]="'list-'+(plugin.name)+'-list'" role="tab"
+         (click)="this.pluginSettings(plugin)">{{ plugin.name }}
+      </a>
     }
   </div>
-  <div id="shadowBottom"></div>
+  <div id="pluginShadowBottom"></div>
 </div>
