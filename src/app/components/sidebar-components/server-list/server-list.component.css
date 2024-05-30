@@ -21,6 +21,7 @@ h3 {
 }
 
 #loginPrompt {
+  white-space: nowrap;
   margin-top: 0.5rem;
   color: var(--bs-body-color);
 }
