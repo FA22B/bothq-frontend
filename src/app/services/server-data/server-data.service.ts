@@ -34,4 +34,12 @@ export class ServerDataService {
   getSelectedServerData() {
     return this.serverList.find(server => server.id === this.selectedServer)
   }
+
+  getSelectedServerId() {
+    if (this.selectedServer) {
+      return +this.selectedServer
+    } else {
+      return 0
+    }
+  }
 }

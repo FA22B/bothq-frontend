@@ -6,6 +6,7 @@ import {Observable} from "rxjs";
 import {SliderComponent} from "./slider/slider.component";
 import {GroupComponent} from "./group/group.component";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
+import {ServerDataService} from "../../services/server-data/server-data.service";
 
 @Component({
   selector: 'app-plugin-settings',
@@ -26,15 +27,8 @@ import {CheckboxComponent} from "./checkbox/checkbox.component";
 export class PluginSettingsComponent {
   pluginData$: Observable<PluginData> | undefined;
 
-  //plugin?: BHQPlugin
-  protected readonly SliderComponent = SliderComponent;
-
-  constructor(public pluginDataService: PluginDataService) {
-  }
-
-  ngOnInit(): void {
-    //placeholder
-    this.pluginData$ = this.pluginDataService.getSelectedPluginData(1);
+  constructor(public pluginDataService: PluginDataService, private serverDataService: ServerDataService) {
+    this.pluginData$ = this.pluginDataService.getSelectedPluginData(this.serverDataService.getSelectedServerId());
   }
 }
 
