@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
-import {BHQPlugin} from "../../../bhqplugin";
 import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.component";
+import {PluginData} from "../../../models/plugin-data.model";
 
 @Component({
   selector: 'app-server-settings',
@@ -13,10 +13,10 @@ import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.compon
   styleUrl: './server-settings.component.css'
 })
 export class ServerSettingsComponent {
-  pluginList?: BHQPlugin[]
+  pluginList?: PluginData[]
 
   constructor(public dataservice: PluginDataService) {
-    this.pluginList = dataservice.pluginList
+    this.pluginList = this.dataservice.getPluginList()
   }
 
 }

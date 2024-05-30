@@ -2,11 +2,12 @@
 <div (scroll)="scrolling()" (transitionend)="scrolling()" class="container" id="plugin-list-group">
   <div id="shadowTop"></div>
   <div class="list-group" id="list-tab" role="tablist">
-    @for (plugin of pluginList; track $index) {
-      <button [attr.aria-controls]="'list-'+(plugin.name)" class="list-group-item list-group-item-action"
+    @for (plugin of pluginList; track plugin.pluginId) {
+      <button [attr.aria-controls]="'list-'+(plugin.pluginId)" class="list-group-item list-group-item-action"
               data-bs-toggle="list"
-              [attr.href]="'#list-'+(plugin.name)"
-              [attr.id]="'list-'+(plugin.name)+'-list'" role="tab" (click)="pluginSettings(plugin)">{{ plugin.name }}
+              [attr.href]="'#list-'+(plugin.pluginId)"
+              [attr.id]="'list-'+(plugin.pluginId)+'-list'" role="tab"
+              (click)="pluginSettings(plugin.pluginId)">{{ plugin.displayName }}
       </button>
     }
   </div>

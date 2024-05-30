@@ -22,7 +22,7 @@
           <div class="row row-cols-3">
             @for (plugin of pluginList; track $index) {
               <div class="col">
-                <app-plugin-collapse [bhqplugin]="plugin"
+                <app-plugin-collapse [plugin]="plugin"
                                      [zIndex]="((pluginList!.length)-$index)"></app-plugin-collapse>
               </div>
             }

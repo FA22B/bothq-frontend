@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {CardComponent} from "../card/card.component";
-import {BHQPlugin} from "../../../bhqplugin";
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {PluginData} from "../../../models/plugin-data.model";
 
 @Component({
   selector: 'app-carousel',
@@ -13,9 +13,9 @@ import {PluginDataService} from "../../../services/plugin-data/plugin-data.servi
   styleUrl: './carousel.component.css'
 })
 export class CarouselComponent {
-  pluginList?: BHQPlugin[]
+  pluginList?: PluginData[]
 
   constructor(public dataservice: PluginDataService) {
-    this.pluginList = dataservice.pluginList
+    this.pluginList = this.dataservice.getPluginList()
   }
 }

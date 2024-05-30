@@ -16,6 +16,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
+  min-height: 60dvh;
 }
 
 #secondaryFrame::-webkit-scrollbar {

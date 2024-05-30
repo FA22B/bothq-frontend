@@ -33,20 +33,8 @@ export class PluginSettingsComponent {
   }
 
   ngOnInit(): void {
-    //this.plugin = this.pluginDataService.selectedPlugin // Old Mockdata
-
-    this.pluginData$ = this.pluginDataService.getSelectedPluginData();
-
-    /*    this.pluginDataService.getPluginData().subscribe({
-            next: (data: PluginData) => {
-              this.pluginData = data;
-              console.log(this.pluginData);
-            },
-            error: (error) => {
-              console.error('Error fetching plugin data:', error);
-            }
-          }
-        );*/
+    //placeholder
+    this.pluginData$ = this.pluginDataService.getSelectedPluginData(1);
   }
 }
 

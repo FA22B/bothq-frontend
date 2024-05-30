@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {BHQPlugin} from "../../../bhqplugin";
 import {Router} from "@angular/router";
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {PluginData} from "../../../models/plugin-data.model";
 
 @Component({
   selector: 'app-plugin-list',
@@ -11,18 +11,18 @@ import {PluginDataService} from "../../../services/plugin-data/plugin-data.servi
   styleUrl: './plugin-list.component.css'
 })
 export class PluginListComponent {
-  pluginList?: BHQPlugin[]
+  pluginList: PluginData[]
 
   constructor(private router: Router, public dataservice: PluginDataService) {
-    this.pluginList = dataservice.pluginList
+    this.pluginList = this.dataservice.getPluginList() || []
   }
 
   getSelectedPlugin() {
     return this.dataservice.selectedPlugin
   }
 
-  pluginSettings(plugin: BHQPlugin) {
-    this.dataservice.selectPlugin(plugin)
+  pluginSettings(pluginid: number) {
+    this.dataservice.selectPlugin(pluginid)
 
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
       this.router.navigateByUrl('/plugin-settings');

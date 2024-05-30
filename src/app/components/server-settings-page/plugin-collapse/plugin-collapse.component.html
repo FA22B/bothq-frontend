@@ -1,11 +1,11 @@
 <div [attr.style]="'z-index: ' + zIndex" class="container" id="frame">
-  @if (this.bhqplugin.isNew) {
-    <h3 style="padding: 0; margin: 0"><span class="badge text-bg-red">New</span></h3>
-  }
+  <!--  @if (this.plugin.isNew) {-->
+  <!--    <h3 style="padding: 0; margin: 0"><span class="badge text-bg-red">New</span></h3>-->
+  <!--  }-->
   <div [attr.id]="'overflow' + nameConcat()" class="overflowContainer">
     <div class="row" style="margin: 2rem 1rem 0">
       <div class="col-auto justify-content-start text-start">
-        <h4>{{ bhqplugin.name }}</h4>
+        <h4>{{ plugin.displayName }}</h4>
       </div>
       <div class="col justify-content-end text-end">
         <div class="form-check form-switch" style="float: right">
@@ -17,7 +17,7 @@
       <div [attr.id]="'collapse' + nameConcat()" class="collapse">
         <div class="container text-start" style="padding: 2rem 1.5rem 0">
           <h5>Description</h5>
-          {{ bhqplugin.description }}
+          {{ plugin.description }}
         </div>
         <div class="container text-end justify-content-end align-content-end" style="margin-top: 1rem">
           <button (click)="pluginSettings()" class="btn btn-gear btn-expand">
