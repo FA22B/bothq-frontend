@@ -30,9 +30,14 @@ export class PluginDataService {
 
   fetchPluginList() {
     this.getAllPlugins().subscribe(data => {
-      localStorage.setItem('pluginDataList', JSON.stringify(data))
+      localStorage.setItem('pluginList', JSON.stringify(data))
     })
-    this.pluginList = JSON.parse(localStorage.getItem('pluginDataList') || '[]')
+    this.pluginList = JSON.parse(localStorage.getItem('pluginList') || '[]')
+  }
+
+  clearPluginList() {
+    this.pluginList = []
+    localStorage.setItem('pluginList', '')
   }
 
   getPluginList() {

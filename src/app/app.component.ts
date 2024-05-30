@@ -6,6 +6,7 @@ import {SidebarComponent} from "./components/sidebar-components/sidebar/sidebar.
 import {AuthService} from "./services/auth/auth.service";
 import {HttpClient} from "@angular/common/http";
 import {LogoutConfirmComponent} from "./components/logout-confirm/logout-confirm.component";
+import {PluginDataService} from "./services/plugin-data/plugin-data.service";
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,10 @@ export class AppComponent {
   title = 'BotHQ';
   theme = 'dark'
 
-  constructor(public authService: AuthService, private httpClient: HttpClient) {
+  constructor(public authService: AuthService, private httpClient: HttpClient, private pluginDataService: PluginDataService) {
     this.theme = this.getPreferredTheme()
+    pluginDataService.clearPluginList()
+    if (!authService.loggedIn) pluginDataService.clearPluginList()
   }
 
   ngOnInit() {

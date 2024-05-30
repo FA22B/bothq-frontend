@@ -1,48 +1,63 @@
-<div class="container-fluid">
-  <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators"
-       style="height: 30rem; width: 40rem; margin: auto">
-    <div class="carousel-indicators">
-      @for (plugin of pluginList; track $index) {
-        @if ($index == 0) {
-          <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
-                  data-bs-target="#carouselExampleIndicators" type="button"></button>
-        } @else {
-          <button [attr.aria-label]="'Slide ' + ($index + 1)" [attr.data-bs-slide-to]="$index"
-                  data-bs-target="#carouselExampleIndicators"
-                  type="button"></button>
-        }
-      }
+@if (pluginList && pluginList.length > 0) {
+  <div class="container-fluid" id="pluginShowcase">
+    <div class="row justify-content-center"
+         style="padding-top: 1rem; padding-right: 0; padding-left: 0; margin-right: 0">
+      <div class="col text-center z-0">
+        <h2 style="color: var(--dc-blurple)"><strong>Our Top Plugins</strong></h2>
+      </div>
     </div>
-    <div>
-      <div id="mask">
-        <div id="blurContainer">
-          <span id="leftBlur"></span>
-          <span id="rightBlur"></span>
-        </div>
-        <div class="carousel-inner">
-          @for (plugin of pluginList; track $index) {
-            @if ($index == 0) {
-              <div class="carousel-item active">
-                <app-card [plugin]="plugin"></app-card>
+    <div class="row justify-content-center"
+         style="padding: 0">
+      <div class="col-md-auto z-1">
+        <div class="container-fluid">
+          <div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators"
+               style="height: 30rem; width: 40rem; margin: auto">
+            <div class="carousel-indicators">
+              @for (plugin of pluginList; track $index) {
+                @if ($index == 0) {
+                  <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
+                          data-bs-target="#carouselExampleIndicators" type="button"></button>
+                } @else {
+                  <button [attr.aria-label]="'Slide ' + ($index + 1)" [attr.data-bs-slide-to]="$index"
+                          data-bs-target="#carouselExampleIndicators"
+                          type="button"></button>
+                }
+              }
+            </div>
+            <div>
+              <div id="mask">
+                <div id="blurContainer">
+                  <span id="leftBlur"></span>
+                  <span id="rightBlur"></span>
+                </div>
+                <div class="carousel-inner">
+                  @for (plugin of pluginList; track $index) {
+                    @if ($index == 0) {
+                      <div class="carousel-item active">
+                        <app-card [plugin]="plugin"></app-card>
+                      </div>
+                    } @else {
+                      <div class="carousel-item">
+                        <app-card [plugin]="plugin"></app-card>
+                      </div>
+                    }
+                  }
+                </div>
               </div>
-            } @else {
-              <div class="carousel-item">
-                <app-card [plugin]="plugin"></app-card>
-              </div>
-            }
-          }
+            </div>
+            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators"
+                    style="height: 15%; top: 35%" type="button">
+              <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators"
+                    style="height: 15%; top: 35%" type="button">
+              <span aria-hidden="true" class="carousel-control-next-icon"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
-    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators"
-            style="height: 15%; top: 35%" type="button">
-      <span aria-hidden="true" class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators"
-            style="height: 15%; top: 35%" type="button">
-      <span aria-hidden="true" class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
   </div>
-</div>
+}
