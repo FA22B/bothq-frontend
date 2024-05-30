@@ -20,8 +20,8 @@ export class AuthService {
   get loggedIn(): boolean {
     if (this._loggedIn === null) {
       this._loggedIn = true
-      this.httpClient.get("/api/v1/servers").subscribe(() => {
-      })
+      this.httpClient.get("/api/v1/servers")
+        .subscribe({error: () => this._loggedIn = false})
     }
     return this._loggedIn;
   }
