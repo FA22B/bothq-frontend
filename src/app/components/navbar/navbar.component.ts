@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Router} from "@angular/router";
+import {ServerDataService} from "../../services/server-data/server-data.service";
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent {
   @Output() loginEvent = new EventEmitter<boolean>()
   @Output() sidebarOpenEvent = new EventEmitter<void>()
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public serverDataService: ServerDataService) {
   }
 
   goTo(route: string) {

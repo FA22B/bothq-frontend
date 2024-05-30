@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ServerDataService} from "../../../services/server-data/server-data.service";
 import {ServerManagementService} from "../../../services/server-management/server-management.service";
-import {DiscordGuild} from "../../../../types";
+import {DiscordGuild, Permission} from "../../../../types";
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
@@ -21,6 +21,8 @@ export class ServerListComponent {
 
     this.dataservice.getServers()
     this.serverList = this.dataservice.getServerList()
+      .filter(server => (BigInt(server.permissions) & Permission.ADMINISTRATOR) != Permission.NONE)
+
   }
 
   serverSettings(serverId: string) {
