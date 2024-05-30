@@ -2,12 +2,15 @@ import {Component} from '@angular/core';
 import {ServerDataService} from "../../../services/server-data/server-data.service";
 import {ServerManagementService} from "../../../services/server-management/server-management.service";
 import {DiscordGuild} from "../../../../types";
-import {Router} from "@angular/router";
+import {Router, RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-server-list',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterOutlet,
+    RouterLink
+  ],
   templateUrl: './server-list.component.html',
   styleUrl: './server-list.component.css'
 })
@@ -16,9 +19,8 @@ export class ServerListComponent {
 
   constructor(private router: Router, public dataservice: ServerDataService, private serverManagementService: ServerManagementService) {
 
-    this.serverManagementService.getAllServers().subscribe(servers => {
-      this.serverList = servers
-    })
+    this.dataservice.getServers()
+    this.serverList = this.dataservice.getServerList()
   }
 
   serverSettings(serverId: string) {

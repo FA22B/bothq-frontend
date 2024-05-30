@@ -3,6 +3,7 @@ import {PluginDataService} from "../../../services/plugin-data/plugin-data.servi
 import {BHQPlugin} from "../../../bhqplugin";
 import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.component";
 import {ServerDataService} from "../../../services/server-data/server-data.service";
+import {DiscordGuild} from "../../../../types";
 
 @Component({
   selector: 'app-server-settings',
@@ -15,12 +16,12 @@ import {ServerDataService} from "../../../services/server-data/server-data.servi
 })
 export class ServerSettingsComponent {
   pluginList?: BHQPlugin[]
-  server?: string
+  server?: DiscordGuild
 
   constructor(public dataservice: PluginDataService, private serverDataService: ServerDataService) {
     this.pluginList = dataservice.pluginList
 
-    this.server = serverDataService.selectedServer || 'No server selected'
+    this.server = this.serverDataService.getSelectedServerData()
   }
 
 }

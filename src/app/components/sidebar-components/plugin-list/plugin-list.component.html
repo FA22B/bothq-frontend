@@ -3,12 +3,12 @@
   <div id="pluginShadowTop"></div>
   <div class="list-group" id="plugin-list-tab" role="tablist">
     @for (plugin of pluginList; track $index) {
-      <button [attr.aria-controls]="'list-'+(plugin.name)" class="list-group-item list-group-item-action"
-              data-bs-toggle="list"
-              [attr.href]="'#list-'+(plugin.name)"
-              [attr.id]="'list-'+(plugin.name)+'-list'" role="tab"
-              (click)="this.pluginSettings(plugin)">{{ plugin.name }}
-      </button>
+      <a [attr.aria-controls]="'list-'+(plugin.name)" class="list-group-item list-group-item-action"
+         data-bs-toggle="list"
+         [attr.routerLink]="'plugin-settings/'+(plugin.name)"
+         [attr.id]="'list-'+(plugin.name)+'-list'" role="tab"
+         (click)="this.pluginSettings(plugin)">{{ plugin.name }}
+      </a>
     }
   </div>
   <div id="pluginShadowBottom"></div>

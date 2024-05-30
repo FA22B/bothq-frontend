@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {BHQPlugin} from "../../../bhqplugin";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
 
 @Component({
   selector: 'app-plugin-list',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink
+  ],
   templateUrl: './plugin-list.component.html',
   styleUrl: './plugin-list.component.css'
 })

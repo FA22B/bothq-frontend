@@ -21,6 +21,7 @@ h3 {
 }
 
 .list-group-item {
+  cursor: pointer;
   background-color: var(--bhq-deep-background);
   border-radius: 20px;
   margin-top: 10px;

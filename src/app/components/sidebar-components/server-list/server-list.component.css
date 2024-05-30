@@ -4,7 +4,7 @@ h3 {
 }
 
 #server-list-group {
-  max-height: 50dvh;
+  max-height: 40dvh;
   position: relative;
   background: var(--bhq-medium-background);
   border: solid 1px var(--bhq-grey-border);
@@ -21,6 +21,8 @@ h3 {
 }
 
 .list-group-item {
+  justify-content: center;
+  cursor: pointer;
   background-color: var(--bhq-deep-background);
   border-radius: 20px;
   margin-top: 10px;
@@ -28,6 +30,7 @@ h3 {
   border: solid 1px var(--bhq-grey-border);
   transition: all 0.3s ease;
   min-width: 200px;
+  min-height: 60px;
 }
 
 .list-group-item.active {

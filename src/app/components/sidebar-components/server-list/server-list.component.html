@@ -3,12 +3,12 @@
   <div id="serverShadowTop"></div>
   <div class="list-group" id="server-list-tab" role="tablist">
     @for (server of serverList; track server.id) {
-      <button [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
-              data-bs-toggle="list"
-              [attr.href]="'#list-'+(server.name)"
-              [attr.id]="'list-'+(server.name)+'-list'" role="tab"
-              (click)="this.serverSettings(server.id)">{{ server.name }}
-      </button>
+      <a [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
+         data-bs-toggle="list"
+         [attr.routerLink]="'server-settings/'+(server.id)"
+         [attr.id]="'list-'+(server.name)+'-list'" role="tab"
+         (click)="this.serverSettings(server.id)">{{ server.name }}
+      </a>
     }
   </div>
   <div id="serverShadowBottom"></div>
