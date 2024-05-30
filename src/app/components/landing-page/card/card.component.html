@@ -1,10 +1,10 @@
 <div class="card" style="width: 18rem; margin: auto;">
-  @if (this.bhqplugin.isNew) {
-    <h3 style="padding: 0; margin: 0"><span class="badge text-bg-red">New</span></h3>
-  }
+  <!--  @if (this.plugin.isNew) {-->
+  <!--    <h3 style="padding: 0; margin: 0"><span class="badge text-bg-red">New</span></h3>-->
+  <!--  }-->
   <div class="card-body">
-    <h4 class="card-title" style="margin: 0.5rem 0 2rem; padding-right: 3rem">{{ this.bhqplugin.name }}</h4>
-    <p class="card-text">{{ this.bhqplugin.description }}</p>
+    <h4 class="card-title" style="margin: 0.5rem 0 2rem; padding-right: 3rem">{{ this.plugin.displayName }}</h4>
+    <p class="card-text">{{ this.plugin.description }}</p>
     <div class="container" style="margin: 5rem 0 0; padding: 0">
       <a (click)="pluginSettings()" class="btn btn-blurple">Anzeigen</a>
     </div>

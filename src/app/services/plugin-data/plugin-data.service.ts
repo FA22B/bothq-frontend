@@ -1,28 +1,49 @@
 import {Injectable} from '@angular/core';
-import {BHQPlugin} from "../../bhqplugin";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {PluginData} from "../../models/plugin-data.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PluginDataService {
-  pluginList = [new BHQPlugin('Chuck Norris Jokes', 'Have the Bot tell a random Chuck Norris Joke from: https://api.chucknorris.io', true),
-    new BHQPlugin('Auto Role', 'Automatically assigns roles to users based on their activity.', false),
-    new BHQPlugin('Auto Voice', 'Automatically creates voice channels on demand and deletes them again, when that demand fades.', false),
-    new BHQPlugin('Auto Mod', 'Automatically moderates your server.', true),
-    new BHQPlugin('Auto Welcome', 'Automatically welcomes new members.', false),
-    new BHQPlugin('Auto Leave', 'Automatically says goodbye to members who leave.', true),
-    new BHQPlugin('Auto Nickname', 'Automatically changes nicknames.', false),
-    new BHQPlugin('Auto Message', 'Automatically sends messages.', true),]
 
-  public selectedPlugin?: BHQPlugin
+  public selectedPlugin?: number
 
-  constructor() {
+  pluginList: PluginData[] = []
+
+  private API_PLUGIN = '/api/v1/plugins'; // Replace with our API URL
+  private API_SERVER = '/api/v1/servers';
+
+  constructor(private httpClient: HttpClient) {
+    this.fetchPluginList()
     let plugin = sessionStorage.getItem('selectedPlugin')
-    if (plugin) this.selectedPlugin = this.pluginList.find(p => p.name === plugin)
+    if (plugin) {
+      this.selectedPlugin = +plugin
+    }
   }
 
-  selectPlugin(plugin: BHQPlugin) {
-    this.selectedPlugin = plugin
-    sessionStorage.setItem('selectedPlugin', plugin.name)
+  selectPlugin(pluginid: number) {
+    this.selectedPlugin = pluginid
+    sessionStorage.setItem('selectedPlugin', pluginid.toString())
+  }
+
+  fetchPluginList() {
+    this.getAllPlugins().subscribe(data => {
+      localStorage.setItem('pluginDataList', JSON.stringify(data))
+    })
+    this.pluginList = JSON.parse(localStorage.getItem('pluginDataList') || '[]')
+  }
+
+  getPluginList() {
+    return this.pluginList
+  }
+
+  getAllPlugins(): Observable<PluginData[]> {
+    return this.httpClient.get<PluginData[]>(this.API_PLUGIN);
+  }
+
+  getSelectedPluginData(serverId: number): Observable<PluginData> {
+    return this.httpClient.get<PluginData>(`${this.API_SERVER}/${serverId}/plugins${this.selectedPlugin}`);
   }
 }

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
-import {BHQPlugin} from "../../../bhqplugin";
 import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.component";
+import {PluginData} from "../../../models/plugin-data.model";
 import {ServerDataService} from "../../../services/server-data/server-data.service";
 import {DiscordGuild} from "../../../../types";
 
@@ -15,6 +15,10 @@ import {DiscordGuild} from "../../../../types";
   styleUrl: './server-settings.component.css'
 })
 export class ServerSettingsComponent {
+  pluginList?: PluginData[]
+
+  constructor(public dataservice: PluginDataService) {
+    this.pluginList = this.dataservice.getPluginList()
   pluginList?: BHQPlugin[]
   server?: DiscordGuild
 

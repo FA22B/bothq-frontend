@@ -19,15 +19,15 @@
           <span id="leftBlur"></span>
           <span id="rightBlur"></span>
         </div>
-        <div class="carousel-inner" style="margin-top: 5rem">
+        <div class="carousel-inner">
           @for (plugin of pluginList; track $index) {
             @if ($index == 0) {
               <div class="carousel-item active">
-                <app-card [bhqplugin]="plugin"></app-card>
+                <app-card [plugin]="plugin"></app-card>
               </div>
             } @else {
               <div class="carousel-item">
-                <app-card [bhqplugin]="plugin"></app-card>
+                <app-card [plugin]="plugin"></app-card>
               </div>
             }
           }

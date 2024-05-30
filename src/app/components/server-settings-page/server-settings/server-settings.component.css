@@ -2,6 +2,7 @@
   border: solid 1px var(--bhq-grey-border);
   border-radius: 40px;
   background: var(--bhq-deep-background);
+  margin-top: 5rem;
   padding: 1rem 2.5rem 2.5rem;
 }
 
@@ -15,6 +16,7 @@
   overflow-x: hidden;
   overflow-y: scroll;
   scrollbar-width: none;
+  min-height: 60dvh;
 }
 
 #secondaryFrame::-webkit-scrollbar {

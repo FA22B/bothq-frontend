@@ -11,16 +11,25 @@
   background: var(--bhq-medium-background);
   padding: 2.5rem;
   margin-top: 1rem;
-  margin-bottom: -0.75rem;
 }
 
 .form-check-input {
   scale: 2;
-  margin-right: 1rem;
+  margin-top: 2rem;
+  margin-right: 4rem;
+  cursor: pointer;
 }
 
 .dropdown-toggle {
   background-color: var(--bhq-deep-background);
   border: solid 1px var(--bhq-grey-border);
   border-radius: 25px;
+}
+
+.dropdown-menu {
+  border-radius: 15px;
+}
+
+.dropdown-item {
+  cursor: pointer;
 }
