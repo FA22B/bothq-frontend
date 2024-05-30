@@ -2,13 +2,18 @@
 <div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="plugin-list-group">
   <div id="pluginShadowTop"></div>
   <div class="list-group" id="plugin-list-tab" role="tablist">
-    @for (plugin of pluginList; track plugin.pluginId) {
-      <a [attr.aria-controls]="'list-'+(plugin.pluginId)" class="list-group-item list-group-item-action"
-         data-bs-toggle="list"
-         [attr.routerLink]="'plugin-settings/'+(plugin.pluginId)"
-         [attr.id]="'list-'+(plugin.pluginId)+'-list'" role="tab"
-         (click)="this.pluginSettings(plugin.pluginId)">{{ plugin.displayName }}
-      </a>
+    @if (pluginList && pluginList.length > 0) {
+      @for (plugin of pluginList; track plugin.pluginId) {
+        <a [attr.aria-controls]="'list-'+(plugin.pluginId)" class="list-group-item list-group-item-action"
+           data-bs-toggle="list"
+           [attr.routerLink]="'plugin-settings/'+(plugin.pluginId)"
+           [attr.id]="'list-'+(plugin.pluginId)+'-list'" role="tab"
+           (click)="this.pluginSettings(plugin.pluginId)">{{ plugin.displayName }}
+        </a>
+      }
+    } @else {
+      <a class="list-group-item list-group-item-action disabled" role="tab" style="color: var(--dc-red)">No plugins
+        found</a>
     }
   </div>
   <div id="pluginShadowBottom"></div>

@@ -1,20 +1,29 @@
 <h3>Servers</h3>
 <div (scroll)="this.scrolling()" (transitionend)="this.scrolling()" class="container" id="server-list-group">
   <div id="serverShadowTop"></div>
-  <div class="list-group" id="server-list-tab" role="tablist">
-    @if (serverList && serverList.length > 0) {
-      @for (server of serverList; track server.id) {
-        <a [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
-           data-bs-toggle="list"
-           [attr.routerLink]="'server-settings/'+(server.id)"
-           [attr.id]="'list-'+(server.name)+'-list'" role="tab"
-           (click)="this.serverSettings(server.id)">{{ server.name }}
-        </a>
+  @if (authservice.loggedIn) {
+    <div class="list-group" id="server-list-tab" role="tablist">
+      @if (serverList && serverList.length > 0) {
+        @for (server of serverList; track server.id) {
+          <a [attr.aria-controls]="'list-'+(server.name)" class="list-group-item list-group-item-action"
+             data-bs-toggle="list"
+             [attr.routerLink]="'server-settings/'+(server.id)"
+             [attr.id]="'list-'+(server.name)+'-list'" role="tab"
+             (click)="this.serverSettings(server.id)">{{ server.name }}
+          </a>
+        }
+      } @else {
+        <a class="list-group-item list-group-item-action disabled" role="tab" style="color: var(--dc-red)">No servers
+          found</a>
       }
-    } @else {
-      <a class="list-group-item list-group-item-action" role="tab">No servers found</a>
-    }
-  </div>
+    </div>
+  } @else {
+    <div class="container" id="loginPrompt">
+      <button class="btn btn-ol-blurple" (click)="logIn()"><strong>Login</strong>
+      </button>
+      <strong>To view your servers</strong>
+    </div>
+  }
   <div id="serverShadowBottom"></div>
 </div>
 
