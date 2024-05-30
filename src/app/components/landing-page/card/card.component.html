@@ -6,7 +6,12 @@
     <h4 class="card-title" style="margin: 0.5rem 0 2rem; padding-right: 3rem">{{ this.plugin.displayName }}</h4>
     <p class="card-text">{{ this.plugin.description }}</p>
     <div class="container" style="margin: 5rem 0 0; padding: 0">
-      <a (click)="pluginSettings()" class="btn btn-blurple">Anzeigen</a>
+      @if (this.authservice.loggedIn) {
+        <a (click)="pluginSettings()" class="btn btn-blurple">View</a>
+      } @else {
+        <button class="btn btn-ol-blurple" (click)="logIn()"><strong>Login to view</strong>
+        </button>
+      }
     </div>
   </div>
 </div>

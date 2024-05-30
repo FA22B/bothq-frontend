@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
-import {BHQPlugin} from "../../../bhqplugin";
 import {Router, RouterLink} from "@angular/router";
 import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
 import {PluginData} from "../../../models/plugin-data.model";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-plugin-list',
@@ -16,7 +16,7 @@ import {PluginData} from "../../../models/plugin-data.model";
 export class PluginListComponent {
   pluginList: PluginData[]
 
-  constructor(private router: Router, public dataservice: PluginDataService) {
+  constructor(private router: Router, public dataservice: PluginDataService, public authservice: AuthService) {
     this.pluginList = this.dataservice.getPluginList() || []
   }
 
@@ -25,6 +25,11 @@ export class PluginListComponent {
   }
 
   pluginSettings(pluginid: number) {
+    if (!this.authservice.loggedIn) {
+      window.location.href = this.authservice.getLoginAddress()
+      return
+    }
+
     this.dataservice.selectPlugin(pluginid)
 
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
