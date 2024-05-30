@@ -6,7 +6,7 @@
     <a aria-disabled="true" class="nav-link disabled"><strong>|</strong></a>
   </li>
   <li class="nav-item">
-    <a (click)="goTo('server-settings')" class="nav-link">Server</a>
+    <a (click)="goTo('server-settings')" class="nav-link">{{ serverDataService.selectedServerName }}</a>
   </li>
 </ul>
 <nav class="navbar fixed-top z-2">

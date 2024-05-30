@@ -9,15 +9,20 @@ export class ServerDataService {
   serverList: DiscordGuild[] = []
 
   public selectedServer?: string
+  public selectedServerName?: string
 
   constructor(private serverManagementService: ServerManagementService) {
     let server = sessionStorage.getItem('selectedServer')
     if (server) this.selectedServer = server
+    let serverName = sessionStorage.getItem('selectedServerName')
+    if (serverName) this.selectedServerName = serverName
   }
 
   selectServer(serverId: string) {
     this.selectedServer = serverId
+    this.selectedServerName = this.getSelectedServerData()?.name
     sessionStorage.setItem('selectedServer', serverId)
+    sessionStorage.setItem('selectedServerName', this.selectedServerName || '')
   }
 
   getServers() {
