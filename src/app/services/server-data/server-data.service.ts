@@ -32,7 +32,7 @@ export class ServerDataService {
     this.serverList = this.getServerList()
   }
 
-  getServerList() {
+  getServerList(): DiscordGuild[] {
     return JSON.parse(localStorage.getItem('serverList') || '[]')
   }
 
@@ -42,7 +42,7 @@ export class ServerDataService {
 
   getSelectedServerId() {
     if (this.selectedServer) {
-      return +this.selectedServer
+      return Number(this.selectedServer)
     } else {
       return 0
     }
