@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, RouterLink} from "@angular/router";
-import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {ServerPluginDataService} from "../../../services/server-plugin-data/server-plugin-data.service";
 import {PluginData} from "../../../models/plugin-data.model";
 import {AuthService} from "../../../services/auth/auth.service";
 
@@ -14,23 +14,27 @@ import {AuthService} from "../../../services/auth/auth.service";
   styleUrl: './plugin-list.component.css'
 })
 export class PluginListComponent {
-  pluginList: PluginData[]
+  public pluginList?: PluginData[];
+  loggedIn: boolean = false
 
-  constructor(private router: Router, public dataservice: PluginDataService, public authservice: AuthService) {
-    this.pluginList = this.dataservice.getPluginList() || []
+  constructor(private router: Router,
+              public dataService: ServerPluginDataService,
+              public authService: AuthService) {
+    dataService.pluginList$.subscribe(
+      plugins => this.pluginList = plugins
+    )
+
+    authService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn)
   }
 
-  getSelectedPlugin() {
-    return this.dataservice.selectedPlugin
-  }
 
-  pluginSettings(pluginid: number) {
-    if (!this.authservice.loggedIn) {
-      window.location.href = this.authservice.getLoginAddress()
+  pluginSettings(pluginId: number) {
+    if (!this.loggedIn) {
+      window.location.href = this.authService.getLoginAddress()
       return
     }
 
-    this.dataservice.selectPlugin(pluginid)
+    this.dataService.selectPlugin(pluginId)
 
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
       this.router.navigateByUrl('/plugin-settings');

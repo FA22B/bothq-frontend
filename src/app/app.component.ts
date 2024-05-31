@@ -6,7 +6,7 @@ import {SidebarComponent} from "./components/sidebar-components/sidebar/sidebar.
 import {AuthService} from "./services/auth/auth.service";
 import {HttpClient} from "@angular/common/http";
 import {LogoutConfirmComponent} from "./components/logout-confirm/logout-confirm.component";
-import {PluginDataService} from "./services/plugin-data/plugin-data.service";
+import {ServerPluginDataService} from "./services/server-plugin-data/server-plugin-data.service";
 
 @Component({
   selector: 'app-root',
@@ -19,10 +19,15 @@ export class AppComponent {
   title = 'BotHQ';
   theme = 'dark'
 
-  constructor(public authService: AuthService, private httpClient: HttpClient, private pluginDataService: PluginDataService) {
+  loggedIn: boolean = false;
+
+  constructor(private authService: AuthService,
+              private httpClient: HttpClient,
+              serverPluginDataService: ServerPluginDataService) {
+    authService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn)
+    serverPluginDataService.updatePlugins()
+
     this.theme = this.getPreferredTheme()
-    pluginDataService.clearPluginList()
-    if (!authService.loggedIn) pluginDataService.clearPluginList()
   }
 
   ngOnInit() {
@@ -78,7 +83,7 @@ export class AppComponent {
    * Toggle the login status of the user
    */
   toggleLogin($event: boolean) {
-    if (this.authService.loggedIn) {
+    if (this.loggedIn) {
       this.logoutDiscord()
     } else {
       this.redirectDiscord()
@@ -95,7 +100,7 @@ export class AppComponent {
   logoutDiscord() {
     this.httpClient.get(this.authService.getLogoutAddress()).subscribe(
       () => {
-        this.authService.loggedIn = false
+        this.authService.setLoggedIn(false)
       }
     )
   }

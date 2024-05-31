@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {ServerPluginDataService} from "../../../services/server-plugin-data/server-plugin-data.service";
 import {PluginCollapseComponent} from "../plugin-collapse/plugin-collapse.component";
 import {PluginData} from "../../../models/plugin-data.model";
 import {ServerDataService} from "../../../services/server-data/server-data.service";
@@ -18,10 +18,10 @@ export class ServerSettingsComponent {
   pluginList?: PluginData[]
   server?: DiscordGuild
 
-  constructor(public dataservice: PluginDataService, private serverDataService: ServerDataService) {
-    this.pluginList = this.dataservice.getPluginList() || []
-
-    this.server = this.serverDataService.getSelectedServerData()
+  constructor(pluginDataService: ServerPluginDataService,
+              serverDataService: ServerDataService) {
+    pluginDataService.pluginList$.subscribe(plugins => this.pluginList = plugins);
+    serverDataService.selectedServer$.subscribe(server => this.server = server);
   }
 
 }

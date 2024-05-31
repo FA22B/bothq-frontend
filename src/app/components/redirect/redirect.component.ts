@@ -26,7 +26,7 @@ export class RedirectComponent {
           let loggedIn = params.get("success")
 
           if (loggedIn === "true") {
-            this.authService.loggedIn = true
+            this.authService.setLoggedIn(true)
           }
         }
       )
