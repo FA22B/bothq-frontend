@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {CardComponent} from "../../landing-page/card/card.component";
 import {PluginListComponent} from "../plugin-list/plugin-list.component";
 import {ServerListComponent} from "../server-list/server-list.component";
+import {AuthService} from "../../../services/auth/auth.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -15,9 +16,15 @@ import {ServerListComponent} from "../server-list/server-list.component";
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  @Input() loggedIn!: boolean
+  loggedIn: boolean = false
+
   @Output() sidebarCloseEvent = new EventEmitter<void>()
   @Output() loginEvent = new EventEmitter<boolean>()
+
+
+  constructor(authService: AuthService) {
+    authService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn)
+  }
 
   closeSidebar() {
     this.sidebarCloseEvent.emit()

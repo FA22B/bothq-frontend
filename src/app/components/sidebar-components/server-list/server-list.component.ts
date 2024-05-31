@@ -3,13 +3,16 @@ import {ServerDataService} from "../../../services/server-data/server-data.servi
 import {DiscordGuild, Permission} from "../../../../types";
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {AuthService} from "../../../services/auth/auth.service";
+import {filter, map, Observable} from "rxjs";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
   selector: 'app-server-list',
   standalone: true,
   imports: [
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    AsyncPipe
   ],
   templateUrl: './server-list.component.html',
   styleUrl: './server-list.component.css'
@@ -17,16 +20,24 @@ import {AuthService} from "../../../services/auth/auth.service";
 export class ServerListComponent {
   @Output() loginEvent = new EventEmitter<boolean>()
   serverList?: DiscordGuild[]
+  loggedIn: boolean = false;
 
-  constructor(private router: Router, public dataservice: ServerDataService, public authservice: AuthService) {
+  constructor(private router: Router,
+              public dataService: ServerDataService,
+              public authService: AuthService) {
+    this.dataService.serverList$.pipe(
+      map(servers => servers
+        .filter(server => (
+          BigInt(server.permissions) & Permission.ADMINISTRATOR) != Permission.NONE))
+    ).subscribe(servers => this.serverList = servers);
 
-    this.dataservice.getServers()
-    this.serverList = this.dataservice.getServerList()
-      .filter(server => (BigInt(server.permissions) & Permission.ADMINISTRATOR) != Permission.NONE)
+    authService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn)
   }
 
+
+
   serverSettings(serverId: string) {
-    this.dataservice.selectServer(serverId);
+    this.dataService.selectServer(serverId);
 
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() => {
       this.router.navigateByUrl('/server-settings');

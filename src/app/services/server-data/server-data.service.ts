@@ -1,50 +1,51 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {DiscordGuild} from "../../../types";
 import {ServerManagementService} from "../server-management/server-management.service";
+import {BehaviorSubject, combineLatest, map, Observable, ReplaySubject, switchMap} from "rxjs";
+import {PluginData} from "../../models/plugin-data.model";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerDataService {
-  serverList: DiscordGuild[] = []
+  private serverListRefresh = new ReplaySubject<void>();
+  serverList$: Observable<DiscordGuild[]>;
 
-  public selectedServer?: string
-  public selectedServerName?: string
+  private selectedServerIdRefresh = new BehaviorSubject<string | undefined>(undefined)
+  selectedServer$: Observable<DiscordGuild | undefined>
 
-  constructor(private serverManagementService: ServerManagementService) {
-    let server = sessionStorage.getItem('selectedServer')
-    if (server) this.selectedServer = server
-    let serverName = sessionStorage.getItem('selectedServerName')
-    if (serverName) this.selectedServerName = serverName
-  }
+  constructor(
+    private serverManagementService: ServerManagementService,
+    private authService: AuthService
+  ) {
+    this.serverList$ = this.serverListRefresh.asObservable().pipe(
+      switchMap(() => this.serverManagementService.getAllServers())
+    );
 
-  selectServer(serverId: string) {
-    this.selectedServer = serverId
-    this.selectedServerName = this.getSelectedServerData()?.name
-    sessionStorage.setItem('selectedServer', serverId)
-    sessionStorage.setItem('selectedServerName', this.selectedServerName || '')
-  }
+    this.selectedServer$ = combineLatest([this.serverList$,  this.selectedServerIdRefresh.asObservable()]).pipe(
+      map(([servers, selectedId]) => {
+        if (selectedId === undefined)
+          return undefined;
 
-  getServers() {
-    this.serverManagementService.getAllServers().subscribe(servers => {
-      localStorage.setItem('serverList', JSON.stringify(servers))
+        return servers.find((server) => server.id == selectedId);
+      })
+    )
+
+    this.authService.loggedIn$.subscribe(loggedIn => {
+      if (loggedIn)
+        this.updateServers()
     })
-    this.serverList = this.getServerList()
   }
 
-  getServerList(): DiscordGuild[] {
-    return JSON.parse(localStorage.getItem('serverList') || '[]')
+
+
+  updateServers(){
+    this.serverListRefresh.next()
   }
 
-  getSelectedServerData() {
-    return this.serverList.find(server => server.id === this.selectedServer)
-  }
 
-  getSelectedServerId() {
-    if (this.selectedServer) {
-      return Number(this.selectedServer)
-    } else {
-      return 0
-    }
+  selectServer(serverId?: string) {
+    this.selectedServerIdRefresh.next(serverId);
   }
 }

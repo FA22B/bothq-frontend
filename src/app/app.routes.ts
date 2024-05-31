@@ -9,8 +9,8 @@ export const routes: Routes = [
   // discord oauth
   {path: 'home', component: HomeComponent},
   {path: 'redirect', component: RedirectComponent},
-  {path: 'plugin-settings', component: PluginSettingsComponent},
-  {path: 'server-settings', component: ServerSettingsComponent},
+  {path: 'plugin-settings', component: PluginSettingsComponent, canActivate: [authGuard]},
+  {path: 'server-settings', component: ServerSettingsComponent, canActivate: [authGuard]},
 
 
   // Landing Page

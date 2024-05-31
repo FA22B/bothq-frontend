@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CardComponent} from "../card/card.component";
-import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {ServerPluginDataService} from "../../../services/server-plugin-data/server-plugin-data.service";
 import {PluginData} from "../../../models/plugin-data.model";
 
 @Component({
@@ -15,7 +15,9 @@ import {PluginData} from "../../../models/plugin-data.model";
 export class CarouselComponent {
   pluginList?: PluginData[]
 
-  constructor(public dataservice: PluginDataService) {
-    this.pluginList = this.dataservice.getPluginList()
+  constructor(public pluginDataService: ServerPluginDataService) {
+    this.pluginDataService.pluginList$.subscribe(
+      plugins => this.pluginList = plugins
+    )
   }
 }

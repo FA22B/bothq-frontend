@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PluginDataService} from "../../../services/plugin-data/plugin-data.service";
+import {ServerPluginDataService} from "../../../services/server-plugin-data/server-plugin-data.service";
 import {Router, RouterOutlet} from "@angular/router";
 import {PluginData} from "../../../models/plugin-data.model";
 import {AuthService} from "../../../services/auth/auth.service";
@@ -15,16 +15,18 @@ import {AuthService} from "../../../services/auth/auth.service";
 })
 export class CardComponent {
   @Input() plugin!: PluginData;
+  loggedIn: boolean = false
 
-  constructor(private router: Router, public dataservice: PluginDataService, public authservice: AuthService) {
+  constructor(private router: Router, public dataService: ServerPluginDataService, public authService: AuthService) {
+    authService.loggedIn$.subscribe(loggedIn => this.loggedIn = loggedIn)
   }
 
   pluginSettings() {
-    this.dataservice.selectPlugin(this.plugin.pluginId)
+    this.dataService.selectPlugin(this.plugin.pluginId)
     this.router.navigateByUrl('/plugin-settings')
   }
 
   logIn() {
-    window.location.href = this.authservice.getLoginAddress()
+    window.location.href = this.authService.getLoginAddress()
   }
 }

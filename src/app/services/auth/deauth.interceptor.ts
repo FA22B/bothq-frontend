@@ -5,7 +5,7 @@ import {AuthService} from "./auth.service";
 
 function handleAuthError(err: HttpErrorResponse): Observable<any> {
   if (err.status == 401 || err.status == 403) {
-    inject(AuthService).loggedIn = false
+    inject(AuthService).setLoggedIn(false)
   }
   return throwError(() => err)
 }

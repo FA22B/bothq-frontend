@@ -1,8 +1,18 @@
-export interface PluginData extends GroupValue {
+export interface PluginData extends GroupValue, NonConcretePluginData {
+}
+
+export interface NonConcretePluginData {
   statusCode: number;
   message: string;
   pluginId: number;
+
+  type: "group";
+  uniqueId: string;
+  enabled: boolean;
+  displayName: string;
+  description?: string;
 }
+
 
 export type PluginValue = CheckboxValue | GroupValue | SliderValue | ComboboxValue | RadioboxValue | TextboxValue;
 
@@ -10,9 +20,7 @@ export type PluginValue = CheckboxValue | GroupValue | SliderValue | ComboboxVal
 export interface ConfigValue {
   type: string;
   uniqueId: string;
-  enabled: boolean;
   displayName: string;
-  description?: string;
   value: any;
 }
 
