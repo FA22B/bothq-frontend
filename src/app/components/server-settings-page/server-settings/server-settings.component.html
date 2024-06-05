@@ -12,11 +12,13 @@
   </div>
   <div class="row">
     <div class="container" id="secondaryFrame">
-      <div class="row">
-        <div class="col install-wrapper">
-          <button class="btn btn-blurple z-1" style="scale: 2; margin: 2rem 2rem 0">Install Bot</button>
+      @if (server?.name != 'BotHQ Headquarters') {
+        <div class="row">
+          <div class="col install-wrapper">
+            <button class="btn btn-blurple z-1" style="scale: 2; margin: 2rem 2rem 0">Install Bot</button>
+          </div>
         </div>
-      </div>
+      }
       <div class="row" style="margin-top: -4rem; margin-bottom: 8rem">
         <div class="container text-center z-0">
           <div class="row row-cols-3">

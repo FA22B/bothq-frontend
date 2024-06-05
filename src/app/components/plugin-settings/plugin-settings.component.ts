@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {ServerPluginDataService} from "../../services/server-plugin-data/server-plugin-data.service";
 import {PluginData} from "../../models/plugin-data.model";
 import {AsyncPipe, NgForOf, NgIf, NgSwitch, NgSwitchCase} from "@angular/common";
-import {catchError, combineLatest, EMPTY, map, Observable, of, switchMap, throwError} from "rxjs";
+import {combineLatest, Observable, of, switchMap} from "rxjs";
 import {SliderComponent} from "./slider/slider.component";
 import {GroupComponent} from "./group/group.component";
 import {CheckboxComponent} from "./checkbox/checkbox.component";
@@ -27,16 +27,14 @@ import {HttpClient} from "@angular/common/http";
   styleUrl: './plugin-settings.component.css'
 })
 export class PluginSettingsComponent {
-  private API_SERVER = '/api/v1/servers';
-
   pluginData$: Observable<PluginData | undefined>;
-
+  private API_SERVER = '/api/v1/servers';
 
   constructor(private pluginDataService: ServerPluginDataService,
               private serverDataService: ServerDataService,
               private httpClient: HttpClient) {
 
-    this.pluginData$ = combineLatest([pluginDataService.selectedPlugin$, serverDataService.selectedServer$]).pipe(
+    this.pluginData$ = combineLatest([this.pluginDataService.selectedPlugin$, this.serverDataService.selectedServer$]).pipe(
       switchMap(([selectedPlugin, selectedServer]) => this.getSelectedPluginData(selectedPlugin, selectedServer))
     )
   }
